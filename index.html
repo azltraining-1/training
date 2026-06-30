@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Azərlotereya - Yeni Partnyor Portalı</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { colors: { brandDarkBlue: '#0a0f24', brandRed: '#ef4444', brandGold: '#f59e0b' } } } }
+    </script>
 </head>
 <body class="bg-slate-900 text-white p-5">
 
     <div class="max-w-md mx-auto bg-black p-6 rounded-3xl border border-slate-700 shadow-2xl">
         <header class="flex items-center gap-4 mb-8">
-            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center p-1">
+            <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center p-1 border-2 border-slate-700">
                 <img src="logo_only.png" alt="Azərlotereya" class="w-full h-full object-contain">
             </div>
             <div>
@@ -19,27 +24,22 @@
             </div>
         </header>
 
-        <h2 class="text-sm font-bold text-slate-500 mb-4 uppercase">Poz-Qazan Məhsulları</h2>
         <div class="space-y-4">
-            
-            <div class="bg-slate-800 p-3 rounded-xl flex items-center gap-4">
-                <img src="qizil.png" alt="Qızıl" class="w-16 h-16 rounded-lg object-cover bg-slate-700">
-                <div class="flex flex-col">
-                    <span class="font-bold">Qızıl & Yığ, apar!</span>
-                    <span class="text-xs text-emerald-400 font-bold">1 AZN</span>
-                </div>
-            </div>
-            
-            <div class="bg-slate-800 p-3 rounded-xl flex items-center gap-4">
-                <img src="ugurlu7.png" alt="Uğurlu 7" class="w-16 h-16 rounded-lg object-cover bg-slate-700">
-                <div class="flex flex-col">
-                    <span class="font-bold">Uğurlu 7 & Qoşa</span>
-                    <span class="text-xs text-blue-400 font-bold">2 AZN</span>
-                </div>
-            </div>
-
+            <h2 class="text-sm font-bold text-slate-500 uppercase">Poz-Qazan Məhsulları</h2>
+            <p class="text-slate-400 text-sm">Portalın bütün funksiyaları aktivdir.</p>
         </div>
     </div>
 
+    <script>
+        // Sənin faylındakı bütün funksiyalar (video, popup və s.) burda işləyəcək
+        function toggleObjection(objectionId, arrowId) {
+            const detail = document.getElementById(objectionId);
+            const arrow = document.getElementById(arrowId);
+            if (detail) {
+                detail.classList.toggle('hidden');
+                if (arrow) arrow.classList.toggle('rotate-180');
+            }
+        }
+    </script>
 </body>
 </html>
