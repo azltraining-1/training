@@ -3,304 +3,858 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azərlotereya - Partnyor Təlimat Portalı</title>
+    <title>Azərlotereya - Onboarding Portalı</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome İkonları -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #0056b3;
-            --secondary-color: #f8f9fa;
-            --text-color: #333;
-            --accent-color: #ffc107;
-            --border-color: #ddd;
+            --al-red: #ff0000;
+            --al-dark: #0a0f1d;
+            --al-card-bg: #131c32;
+            --al-text-muted: #94a3b8;
+            --al-gold: #fbbf24;
         }
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--al-dark);
+            color: #ffffff;
             margin: 0;
             padding: 0;
-            color: var(--text-color);
-            background-color: #fff;
+            -webkit-tap-highlight-color: transparent;
         }
-        header {
-            background-color: var(--secondary-color);
-            border-bottom: 3px solid var(--primary-color);
-            padding: 20px;
-            display: flex;
-            align-items: center;
+        .tab-content {
+            display: none;
         }
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        .tab-content.active {
+            display: block;
         }
-        .logo-placeholder {
-            width: 60px;
-            height: 60px;
-            background-color: var(--primary-color);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            border-radius: 8px;
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
         }
-        .brand-title h1 {
-            margin: 0;
-            font-size: 24px;
-            color: var(--primary-color);
+        .accordion-content.open {
+            max-height: 1000px;
+            transition: max-height 0.5s ease-in;
         }
-        .brand-title p {
-            margin: 5px 0 0 0;
-            font-size: 16px;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
         }
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0f172a;
         }
-        .welcome-section {
-            background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%);
-            border-left: 5px solid var(--primary-color);
-            padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 40px;
-        }
-        .welcome-section h2 {
-            color: var(--primary-color);
-            margin-top: 0;
-        }
-        .motivation-text {
-            font-size: 18px;
-            font-style: italic;
-            color: #1e3a8a;
-            background-color: rgba(255,255,255,0.7);
-            padding: 15px;
-            border-radius: 6px;
-            border-left: 3px solid #10b981;
-        }
-        h2.section-title {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 10px;
-            margin-top: 40px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background-color: #fff;
-        }
-        th, td {
-            border: 1px solid var(--border-color);
-            padding: 12px 15px;
-            text-align: left;
-        }
-        th {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        .game-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .game-card {
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            background-color: #fdfdfd;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .game-logo {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 15px auto;
-            background-color: #eee;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 12px;
-            color: #555;
-            border: 2px dashed var(--primary-color);
-        }
-        .footer {
-            text-align: center;
-            padding: 30px;
-            margin-top: 60px;
-            background-color: var(--secondary-color);
-            border-top: 1px solid var(--border-color);
-            color: #777;
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 3px;
         }
     </style>
 </head>
-<body>
+<body class="bg-[#0a0f1d] text-white pb-24">
 
-    <header>
-        <div class="logo-area">
-            <div class="logo-placeholder">AL</div>
-            <div class="brand-title">
-                <h1>Azərlotereya</h1>
-                <p>Partnyor təlimat portalı</p>
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 bg-[#0a0f1d]/95 backdrop-blur-md border-b border-slate-800 px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+            <!-- logo.png reference along with Brand Text -->
+            <img src="logo.png" alt="Azərlotereya" class="h-12 w-auto object-contain shrink-0" onerror="this.onerror=null; this.outerHTML='<div class=\'bg-red-600 text-white font-black p-2.5 rounded-lg text-sm tracking-widest shadow-lg shadow-red-900/30\'>AL</div>';">
+            <div>
+                <h1 class="text-lg font-black tracking-tight text-white uppercase">Azərlotereya</h1>
+                <p class="text-[11px] text-slate-400 uppercase tracking-widest font-semibold">Partnyor təlimat portalı</p>
             </div>
+        </div>
+        <div class="flex items-center space-x-2">
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                <span class="h-1.5 w-1.5 rounded-full bg-red-500 mr-2 animate-pulse"></span> Rəsmi Portal
+            </span>
         </div>
     </header>
 
-    <div class="container">
-        
-        <!-- Xoş Gəldiniz və Rəsmi Zəmanət Bölməsi -->
-        <section class="welcome-section">
-            <h2>Rəsmi Zəmanətimiz və Öhdəliyimiz</h2>
-            <p>Bu portal Azərlotereya ASC-nin rəsmi tərəfdaşları üçün vahid təlimat və standartlaşdırma mənbəyidir. Burada təqdim olunan bütün qaydalar, satış metodologiyaları və bilet şərtləri şirkətin daxili playbuku əsasında təsdiq edilmişdir.</p>
+    <!-- MAIN CONTENT CONTAINERS -->
+    <main class="max-w-4xl mx-auto px-4 pt-6">
+
+        <!-- TAB 1: ANA SƏHİFƏ -->
+        <section id="home" class="tab-content active space-y-6">
             
-            <div class="motivation-text">
-                <strong>Ailəmizə Xoş Gəldiniz! Sən Böyük Bir Uğurun Parçasısan!</strong><br>
-                Sən sadəcə bilet satmırsan, hər gün yüzlərlə insanın xəyallarına toxunur və nöqtəmizin qazancını idarə edirsən! Sənə uğurlar arzulayırıq.
+            <!-- Rəsmi Zəmanət və Xüsusi Motivasiya Bloku -->
+            <div class="bg-gradient-to-br from-red-950/40 via-slate-900 to-slate-950 rounded-2xl p-6 border border-red-500/20 relative overflow-hidden shadow-2xl">
+                <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-red-600/10 rounded-full blur-3xl"></div>
+                <span class="text-[10px] font-bold text-red-400 uppercase tracking-widest bg-red-500/10 border border-red-500/20 px-3 py-1 rounded-full">Rəsmi Zəmanətimiz</span>
+                
+                <h2 class="text-xl font-bold mt-4 mb-2 text-white">Ailəmizə Xoş Gəldiniz! Sən Böyük Bir Uğurun Parçasısan!</h2>
+                <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                    Sən sadəcə bilet satmırsan, hər gün yüzlərlə insanın xəyallarına toxunur və nöqtəmizin qazancını idarə edirsən! Sənə uğurlar arzulayırıq.
+                </p>
+                <div class="pt-3 border-t border-slate-800/80 text-xs text-slate-400 flex justify-between items-center">
+                    <span>Azərlotereya ASC</span>
+                    <span class="text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check"></i> 100% Qanuni və Şəffaf</span>
+                </div>
+            </div>
+
+            <!-- Tez-tez İstifadə Olunan Sürətli Keçid Kartları -->
+            <div>
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Sürətli Naviqasiya Menyusu</h3>
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="switchTab('home-videos-anchor')" class="bg-[#131c32] p-4 rounded-xl border border-slate-800 text-left hover:border-slate-700 transition active:scale-95">
+                        <div class="w-9 h-9 rounded-lg bg-red-500/10 flex items-center justify-center text-red-500 mb-2">
+                            <i class="fa-solid fa-play text-base"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-white">📹 Video Təlimlər</h4>
+                        <p class="text-[11px] text-slate-400 mt-0.5">Rəsmi video rəhbər</p>
+                    </button>
+
+                    <button onclick="switchTab('products')" class="bg-[#131c32] p-4 rounded-xl border border-slate-800 text-left hover:border-slate-700 transition active:scale-95">
+                        <div class="w-9 h-9 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-500 mb-2">
+                            <i class="fa-solid fa-book-open text-base"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-white">📚 Məhsul Portfeli</h4>
+                        <p class="text-[11px] text-slate-400 mt-0.5">Qaydalar və Vizuallar</p>
+                    </button>
+
+                    <button onclick="switchTab('terminals')" class="bg-[#131c32] p-4 rounded-xl border border-slate-800 text-left hover:border-slate-700 transition active:scale-95">
+                        <div class="w-9 h-9 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 mb-2">
+                            <i class="fa-solid fa-tablet-alt text-base"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-white">📱 Terminallar</h4>
+                        <p class="text-[11px] text-slate-400 mt-0.5">Sürətli texniki dəstək</p>
+                    </button>
+
+                    <button onclick="switchTab('sales-techniques')" class="bg-[#131c32] p-4 rounded-xl border border-slate-800 text-left hover:border-slate-700 transition active:scale-95">
+                        <div class="w-9 h-9 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 mb-2">
+                            <i class="fa-solid fa-chart-line text-base"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-white">🎯 Satış Texnikaları</h4>
+                        <p class="text-[11px] text-slate-400 mt-0.5">Müştəri tipləri və ssenarilər</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Video Təlimlər Blok (Anchor üçün və Playlist linki) -->
+            <div id="home-videos-anchor" class="bg-[#131c32] rounded-xl border border-slate-800 p-5">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-brands fa-youtube text-red-500 text-xl"></i>
+                        <h3 class="font-bold text-sm">Rəsmi Video Təlim Pleylisti</h3>
+                    </div>
+                    <span class="text-[11px] px-2 py-0.5 bg-slate-800 rounded-full text-slate-400 font-semibold">Yeni Partnyor</span>
+                </div>
+                <p class="text-xs text-slate-300 mb-4 leading-relaxed">
+                    Satış nöqtəsində fəaliyyətə başlamazdan əvvəl rəsmi terminal istifadəsi və ümumi qaydaları özündə cəmləşdirən rəsmi pleylisti izləmək mütləqdir.
+                </p>
+                <a href="https://www.youtube.com/playlist?list=PLsXr2GQCQIa-Oc0ymG80eP1li14vjOYQc" target="_blank" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center space-x-2 text-xs transition active:scale-95 shadow-lg shadow-red-950/20">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    <span>Pleylisti YouTube-da Aç</span>
+                </a>
             </div>
         </section>
 
-        <!-- Tirajlı Lotereyalar Bölməsi -->
-        <section id="tirajli">
-            <h2 class="section-title">1. Tirajlı Lotereyalar və Düzgün Oyun Qaydaları</h2>
-            <p>Playbook testləri və rəsmi qaydalara uyğun olaraq yenilənmiş tirajlı oyun parametrləri:</p>
-            
-            <table>
-                <thead>
-                    <tr>
-                        <th>Oyunun Adı</th>
-                        <th>Bilet Qiyməti</th>
-                        <th>Əsas Qaydalar və Rəqəm Diapazonu</th>
-                        <th>Maksimum Uduş / Cekpot Şərti</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <!-- Super Keno məlumatı rəsmi testə əsasən düzəldildi -->
-                        <td><strong>Super Keno</strong>[cite: 1]</td>
-                        <td>1 AZN[cite: 1]</td>
-                        <td>1-80 diapazonundan 1-dən 10-dək rəqəm seçilir. Hər tirajda 20 rəqəm çıxarılır.[cite: 1]</td>
-                        <td>Misli seçilmədən maksimum uduş 100,000 AZN təşkil edir.[cite: 1]</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Beşdə 5</strong>[cite: 1]</td>
-                        <td>1 AZN[cite: 1]</td>
-                        <td>1-36 diapazonundan 5 rəqəm seçilir. Tirajlar hər gün keçirilir.[cite: 1]</td>
-                        <td>Təyin olunmuş sayda tiraj topunda 5 rəqəmin hamısının tapılması Cekpotu qazandırır.[cite: 1]</td>
-                    </tr>
-                    <tr>
-                        <td><strong>4 + 4</strong>[cite: 1]</td>
-                        <td>1 AZN[cite: 1]</td>
-                        <td>Oyun panelində iki (A və B) lövhə var. Hər lövhədə 1-20 diapazonundan 4 rəqəm seçilir.[cite: 1]</td>
-                        <td>Minimum Cekpot məbləği 25,000 AZN-dir (Hər iki lövhədə bütün rəqəmlər tapılmalıdır).[cite: 1]</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Meqa 5/36</strong>[cite: 1]</td>
-                        <td>1 AZN[cite: 1]</td>
-                        <td>1-36 diapazonundan 5 rəqəm seçilir. Əlavə olaraq Meqa top oyunu mövcuddur.[cite: 1]</td>
-                        <td>Uduş şansları və kateqoriyaları kombinasiyaya əsasən dəyişir.[cite: 1]</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+        <!-- TAB 2: MƏHSULLAR -->
+        <section id="products" class="tab-content space-y-6">
+            <!-- Daxili Alt Menu (Tirajlı / Poz-Qazan keçidi üçün) -->
+            <div class="flex p-1 bg-[#131c32] rounded-lg border border-slate-800">
+                <button onclick="toggleProductSubTab('tirajli')" id="subtab-btn-tirajli" class="flex-1 py-2.5 text-center text-xs font-bold rounded-md bg-red-600 text-white transition">
+                    🎰 Tirajlı Oyunlar
+                </button>
+                <button onclick="toggleProductSubTab('pozqazan')" id="subtab-btn-pozqazan" class="flex-1 py-2.5 text-center text-xs font-bold text-slate-400 hover:text-white transition">
+                    🎟 Poz-Qazan (Ani) Lotereyalar
+                </button>
+            </div>
 
-        <!-- Ani Lotereyalar (Poz-Qazan) Bölməsi -->
-        <section id="ani">
-            <h2 class="section-title">2. Ani Lotereyalar (Poz-Qazan) və Fərdi Logolar</h2>
-            <p>Hər bir ani lotereya oyununun öz loqo sahəsi və Playbook-a uyğun unikal xüsusiyyətləri:</p>
-            
-            <div class="game-grid">
-                <!-- Baza Oyunları -->
-                <div class="game-card">
-                    <div class="game-logo">QIZIL LOGO</div>
-                    <h3>Qızıl</h3>
-                    <p><strong>Baza Oyunu</strong></p>
-                    <p>Yüksək tirajlı və kütləvi tanınan klassik oyun interfeysi. Müştərilərin ən çox etibar etdiyi dayaq məhsul.</p>
+            <!-- SUB-TAB: TİRAJLİ OYUNLAR -->
+            <div id="product-subtab-tirajli" class="space-y-4">
+                <!-- 4+4 -->
+                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden">
+                    <div class="bg-gradient-to-r from-red-900/30 to-slate-900 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
+                        <h4 class="font-bold text-sm text-white">4+4</h4>
+                        <span class="text-[10px] bg-red-500/20 text-red-400 border border-red-500/30 px-2.5 py-0.5 rounded font-semibold">Tirajlı</span>
+                    </div>
+                    <div class="p-4 space-y-2.5 text-xs">
+                        <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Necə oynanılır:</strong> İştirakçı hər iki (A və B) matrisdən (zonadan) minimum 4 rəqəm seçərək kombinasiya yaradır.</p></div>
+                        <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Tiraj vaxtı:</strong> Hər gün keçirilir.</p></div>
+                        <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Minimal mərc:</strong> 2 AZN</p></div>
+                        <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Böyük uduş:</strong> Minimum başlanğıc Cekpot məbləği 500,000 AZN təşkil edir.</p></div>
+                        <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')" class="mt-2 w-full bg-slate-800 hover:bg-slate-700 text-slate-200 py-2.5 rounded-lg font-bold flex items-center justify-center space-x-1.5 transition">
+                            <i class="fa-solid fa-circle-play text-red-500"></i> <span>🎥 Video bax</span>
+                        </button>
+                    </div>
                 </div>
 
-                <div class="game-card">
-                    <div class="game-logo">UĞURLU 7 LOGO</div>
-                    <h3>Uğurlu 7</h3>
-                    <p><strong>Baza Oyunu</strong>[cite: 1]</p>
-                    <p>Statistik olaraq hər 3 biletdən 1-nin uduşlu olması (3-də 1 şans) ilə seçilən kütləvi oyun tipli baza məhsulu[cite: 1].</p>
+                <!-- Beşdə Beş -->
+                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden">
+                    <div class="bg-gradient-to-r from-red-900/30 to-slate-900 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
+                        <h4 class="font-bold text-sm text-white">Beşdə Beş</h4>
+                        <span class="text-[10px] bg-red-500/20 text-red-400 border border-red-500/30 px-2.5 py-0.5 rounded font-semibold">Tirajlı</span>
+                    </div>
+                    <div class="p-4 space-y-2.5 text-xs">
+                        <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Necə oynanılır:</strong> 1-dən 36-ya qədər olan rəqəm çoxluğundan 5 rəqəm seçilir.</p></div>
+                        <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Tiraj vaxtı:</strong> Hər gün mütəmadi keçirilir.</p></div>
+                        <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Minimal mərc:</strong> 2 AZN</p></div>
+                        <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Böyük uduş:</strong> Böyük uduş fondu 50,000 AZN təşkil edir.</p></div>
+                        <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')" class="mt-2 w-full bg-slate-800 hover:bg-slate-700 text-slate-200 py-2.5 rounded-lg font-bold flex items-center justify-center space-x-1.5 transition">
+                            <i class="fa-solid fa-circle-play text-red-500"></i> <span>🎥 Video bax</span>
+                        </button>
+                    </div>
                 </div>
 
-                <div class="game-card">
-                    <div class="game-logo">5X LOGO</div>
-                    <h3>5X</h3>
-                    <p><strong>Baza Oyunu</strong></p>
-                    <p>Multiplikator (vurma) funksiyalı, uduş məbləğini qatlama şansı verən dinamik baza oyunu.</p>
+                <!-- Super Keno -->
+                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden">
+                    <div class="bg-gradient-to-r from-red-900/30 to-slate-900 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
+                        <h4 class="font-bold text-sm text-white">Super Keno</h4>
+                        <span class="text-[10px] bg-red-500/20 text-red-400 border border-red-500/30 px-2.5 py-0.5 rounded font-semibold">Tirajlı</span>
+                    </div>
+                    <div class="p-4 space-y-2.5 text-xs">
+                        <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Necə oynanılır:</strong> 1-dən 80-ə qədər olan rəqəmlərdən iştirakçı 1-dən 10-a qədər seçim edir, tirajda isə 20 rəqəm çıxarılır.</p></div>
+                        <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Tiraj vaxtı:</strong> Canlı yayımda keçirilir.</p></div>
+                        <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Minimal mərc:</strong> 1 AZN</p></div>
+                        <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Böyük uduş:</strong> Hər hansı bir misli (multiplikator) seçilmədiyi təqdirdə, 10/10 rəqəm uyğun gələrsə böyük uduş 100,000 AZN təşkil edir.</p></div>
+                        <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')" class="mt-2 w-full bg-slate-800 hover:bg-slate-700 text-slate-200 py-2.5 rounded-lg font-bold flex items-center justify-center space-x-1.5 transition">
+                            <i class="fa-solid fa-circle-play text-red-500"></i> <span>🎥 Video bax</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-TAB: POZ-QAZAN MƏHSULLARI (1 AZN - 10 AZN Qiymət Artımı və Vizuallarla) -->
+            <div id="product-subtab-pozqazan" class="space-y-4 hidden">
+                <!-- Biznes Qaydası Xəbərdarlığı -->
+                <div class="p-3 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-lg text-xs flex items-start space-x-2">
+                    <i class="fa-solid fa-circle-info mt-0.5"></i>
+                    <span><strong>Mühüm Qayda:</strong> Poz-Qazan biletləri vitrində müştərilərə qiymət kateqoriyasına uyğun olaraq 1 AZN-dən 10 AZN-ə doğru artan ardıcıllıqla təqdim edilməlidir.</span>
                 </div>
 
-                <!-- Komplimentar Oyunlar -->
-                <div class="game-card">
-                    <div class="game-logo">YIĞ APAR LOGO</div>
-                    <h3>Yığ Apar</h3>
-                    <p><strong>Komplimentar Oyun</strong>[cite: 1]</p>
-                    <p>Xüsusi hədəf kütləsi üçün nəzərdə tutulmuş, fərqli vizual mövzuya malik tamamlayıcı oyun[cite: 1].</p>
+                <!-- 1 AZN: QIZIL -->
+                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden">
+                    <div class="bg-slate-800/60 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-6 h-6 rounded bg-amber-500 text-slate-950 font-black flex items-center justify-center text-[10px]">1₼</span>
+                            <h4 class="font-bold text-sm text-amber-400">Qızıl (Baza)</h4>
+                        </div>
+                        <span class="text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded font-semibold">Ani Lotereya</span>
+                    </div>
+                    <div class="p-4 flex flex-col md:flex-row gap-4 items-center">
+                        <!-- Custom CSS Ticket Visual representing Qızıl -->
+                        <div class="w-24 h-36 bg-gradient-to-br from-yellow-700 via-yellow-400 to-yellow-800 rounded-lg shadow-lg flex flex-col justify-between p-2 shrink-0 border border-yellow-200">
+                            <span class="text-[7px] text-yellow-950 font-black uppercase text-center block">QIZIL</span>
+                            <div class="my-auto flex flex-col items-center">
+                                <i class="fa-solid fa-cubes text-yellow-100 text-xl"></i>
+                                <span class="text-[8px] font-bold text-yellow-100 mt-1">25 000₼</span>
+                            </div>
+                            <span class="text-[9px] text-yellow-900 bg-yellow-100 font-black rounded-sm py-0.5 text-center uppercase block">1 AZN</span>
+                        </div>
+                        <div class="flex-1 space-y-2.5 text-xs w-full">
+                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Necə oynanılır:</strong> "MÜKAFAT" və "OYUN" sahələrindəki gizli qat pozulur, eyni rəqəmlər və ya simvollar uyğun gəldikdə uduş qazanılır (Uduş şansı 5-də 1-dir).</p></div>
+                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Minimal mərc:</strong> 1 AZN / <strong class="text-slate-300">Böyük uduş:</strong> 25,000 AZN</p></div>
+                            <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')" class="mt-2 w-full bg-slate-800 hover:bg-slate-700 text-slate-200 py-2 rounded-lg font-bold flex items-center justify-center space-x-1.5 transition">
+                                <i class="fa-solid fa-circle-play text-red-500"></i> <span>🎥 Video bax</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="game-card">
-                    <div class="game-logo">QOŞA LOGO</div>
-                    <h3>Qoşa</h3>
-                    <p><strong>Komplimentar Oyun</strong>[cite: 1]</p>
-                    <p>Eyni simvolların və ya rəqəmlərin cütləşməsi prinsipinə əsaslanan sürətli və əyləncəli mexanika[cite: 1].</p>
+                <!-- 1 AZN: YIĞ, APAR! -->
+                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden">
+                    <div class="bg-slate-800/60 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-6 h-6 rounded bg-amber-500 text-slate-950 font-black flex items-center justify-center text-[10px]">1₼</span>
+                            <h4 class="font-bold text-sm text-white">Yığ, Apar! (Komp.)</h4>
+                        </div>
+                        <span class="text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded font-semibold">Ani Lotereya</span>
+                    </div>
+                    <div class="p-4 flex flex-col md:flex-row gap-4 items-center">
+                        <!-- Custom CSS Ticket Visual representing Yığ Apar -->
+                        <div class="w-24 h-36 bg-gradient-to-br from-emerald-600 via-green-400 to-teal-800 rounded-lg shadow-lg flex flex-col justify-between p-2 shrink-0 border border-emerald-300">
+                            <span class="text-[7px] text-emerald-950 font-black uppercase text-center block">YIĞ APAR</span>
+                            <div class="my-auto flex flex-col items-center">
+                                <i class="fa-solid fa-sack-dollar text-emerald-100 text-xl animate-bounce"></i>
+                                <span class="text-[8px] font-bold text-white mt-1">5 000₼</span>
+                            </div>
+                            <span class="text-[9px] text-emerald-900 bg-emerald-100 font-black rounded-sm py-0.5 text-center uppercase block">1 AZN</span>
+                        </div>
+                        <div class="flex-1 space-y-2.5 text-xs w-full">
+                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Necə oynanılır:</strong> Müvafiq xanaları pozaraq eyni məbləğləri və ya uduş kombinasiyalarını toplamaq lazımdır (Uduş şansı 6-da 1-dir).</p></div>
+                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Minimal mərc:</strong> 1 AZN / <strong class="text-slate-300">Böyük uduş:</strong> 5,000 AZN</p></div>
+                            <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')" class="mt-2 w-full bg-slate-800 hover:bg-slate-700 text-slate-200 py-2 rounded-lg font-bold flex items-center justify-center space-x-1.5 transition">
+                                <i class="fa-solid fa-circle-play text-red-500"></i> <span>🎥 Video bax</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="game-card">
-                    <div class="game-logo">MEGA 7 LOGO</div>
-                    <h3>Mega 7</h3>
-                    <p><strong>Komplimentar Oyun</strong>[cite: 1]</p>
-                    <p>Uğurlu 7 oyununun daha böyük büdcəli və daha böyük maksimum uduş vəd edən premium versiyası[cite: 1].</p>
+                <!-- 2 AZN: UĞURLU 7 -->
+                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden">
+                    <div class="bg-slate-800/60 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-6 h-6 rounded bg-red-600 text-white font-black flex items-center justify-center text-[10px]">2₼</span>
+                            <h4 class="font-bold text-sm text-red-400">Uğurlu 7 (Baza)</h4>
+                        </div>
+                        <span class="text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded font-semibold">Ani Lotereya</span>
+                    </div>
+                    <div class="p-4 flex flex-col md:flex-row gap-4 items-center">
+                        <!-- Custom CSS Ticket Visual representing Uğurlu 7 -->
+                        <div class="w-24 h-36 bg-gradient-to-br from-red-700 via-rose-500 to-red-950 rounded-lg shadow-lg flex flex-col justify-between p-2 shrink-0 border border-red-400">
+                            <span class="text-[7px] text-white font-black uppercase text-center block">UĞURLU 7</span>
+                            <div class="my-auto flex flex-col items-center">
+                                <span class="text-3xl font-black text-white leading-none drop-shadow">7</span>
+                                <span class="text-[7px] text-yellow-300 font-bold mt-1">3-də 1 şans</span>
+                            </div>
+                            <span class="text-[9px] text-red-950 bg-red-200 font-black rounded-sm py-0.5 text-center uppercase block">2 AZN</span>
+                        </div>
+                        <div class="flex-1 space-y-2.5 text-xs w-full">
+                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Necə oynanılır:</strong> "UĞURLU RƏQƏMLƏR" sahəsindəki hər hansı bir rəqəm "SİZİN RƏQƏMLƏR" sahəsindəki rəqəmlə eynidirsə, həmin rəqəmin dərhal altındakı uduş qazanılır. "7" simvolu tapılarsa uduş çarpanla ikiqat artır (Riyazi uduş şansı ən yüksək: 3-də 1 şans).</p></div>
+                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Minimal mərc:</strong> 2 AZN / <strong class="text-slate-300">Böyük uduş:</strong> 50,000 AZN</p></div>
+                            <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')" class="mt-2 w-full bg-slate-800 hover:bg-slate-700 text-slate-200 py-2 rounded-lg font-bold flex items-center justify-center space-x-1.5 transition">
+                                <i class="fa-solid fa-circle-play text-red-500"></i> <span>🎥 Video bax</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2 AZN: XOŞ BƏXT -->
+                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden">
+                    <div class="bg-slate-800/60 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-6 h-6 rounded bg-red-600 text-white font-black flex items-center justify-center text-[10px]">2₼</span>
+                            <h4 class="font-bold text-sm text-purple-400">Xoş Bəxt (Komp.)</h4>
+                        </div>
+                        <span class="text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded font-semibold">Ani Lotereya</span>
+                    </div>
+                    <div class="p-4 flex flex-col md:flex-row gap-4 items-center">
+                        <!-- Custom CSS Ticket Visual representing Xoş Bəxt -->
+                        <div class="w-24 h-36 bg-gradient-to-br from-purple-700 via-fuchsia-500 to-purple-900 rounded-lg shadow-lg flex flex-col justify-between p-2 shrink-0 border border-purple-400">
+                            <span class="text-[7px] text-white font-black uppercase text-center block">XOŞ BƏXT</span>
+                            <div class="my-auto flex flex-col items-center">
+                                <i class="fa-solid fa-clover text-yellow-300 text-xl animate-spin-slow"></i>
+                                <span class="text-[8px] font-bold text-purple-100 mt-1">50 000₼</span>
+                            </div>
+                            <span class="text-[9px] text-purple-950 bg-purple-200 font-black rounded-sm py-0.5 text-center uppercase block">2 AZN</span>
+                        </div>
+                        <div class="flex-1 space-y-2.5 text-xs w-full">
+                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Necə oynanılır:</strong> Müvafiq qoruyucu qat pozulur, əgər bilet "X" və ya xüsusi bəxt simvolu ehtiva edirsə, matris üzrə uduş hesablanır.</p></div>
+                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Minimal mərc:</strong> 2 AZN / <strong class="text-slate-300">Böyük uduş:</strong> 50,000 AZN</p></div>
+                            <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')" class="mt-2 w-full bg-slate-800 hover:bg-slate-700 text-slate-200 py-2 rounded-lg font-bold flex items-center justify-center space-x-1.5 transition">
+                                <i class="fa-solid fa-circle-play text-red-500"></i> <span>🎥 Video bax</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2 AZN: QOŞA -->
+                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden">
+                    <div class="bg-slate-800/60 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-6 h-6 rounded bg-red-600 text-white font-black flex items-center justify-center text-[10px]">2₼</span>
+                            <h4 class="font-bold text-sm text-cyan-400">Qoşa (Komp.)</h4>
+                        </div>
+                        <span class="text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded font-semibold">Ani Lotereya</span>
+                    </div>
+                    <div class="p-4 flex flex-col md:flex-row gap-4 items-center">
+                        <!-- Custom CSS Ticket Visual representing Qoşa -->
+                        <div class="w-24 h-36 bg-gradient-to-br from-cyan-700 via-teal-500 to-cyan-950 rounded-lg shadow-lg flex flex-col justify-between p-2 shrink-0 border border-cyan-400">
+                            <span class="text-[7px] text-white font-black uppercase text-center block">QOŞA</span>
+                            <div class="my-auto flex flex-col items-center">
+                                <div class="flex gap-1 text-cyan-200">
+                                    <i class="fa-solid fa-star text-sm"></i>
+                                    <i class="fa-solid fa-star text-sm"></i>
+                                </div>
+                                <span class="text-[8px] font-bold text-cyan-100 mt-1">4 000₼</span>
+                            </div>
+                            <span class="text-[9px] text-cyan-950 bg-cyan-200 font-black rounded-sm py-0.5 text-center uppercase block">2 AZN</span>
+                        </div>
+                        <div class="flex-1 space-y-2.5 text-xs w-full">
+                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Necə oynanılır:</strong> Qoşa rəqəmlər və ya eyni simvolların cütləşməsi prinsipinə əsaslanan asan və əyləncəli mexanika (4-də 1 şans).</p></div>
+                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Minimal mərc:</strong> 2 AZN / <strong class="text-slate-300">Böyük uduş:</strong> 4,000 AZN</p></div>
+                            <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')" class="mt-2 w-full bg-slate-800 hover:bg-slate-700 text-slate-200 py-2 rounded-lg font-bold flex items-center justify-center space-x-1.5 transition">
+                                <i class="fa-solid fa-circle-play text-red-500"></i> <span>🎥 Video bax</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3 AZN: 5X -->
+                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden">
+                    <div class="bg-slate-800/60 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-6 h-6 rounded bg-emerald-600 text-white font-black flex items-center justify-center text-[10px]">3₼</span>
+                            <h4 class="font-bold text-sm text-emerald-400">5X (Baza)</h4>
+                        </div>
+                        <span class="text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded font-semibold">Ani Lotereya</span>
+                    </div>
+                    <div class="p-4 flex flex-col md:flex-row gap-4 items-center">
+                        <!-- Custom CSS Ticket Visual representing 5X -->
+                        <div class="w-24 h-36 bg-gradient-to-br from-emerald-700 via-teal-500 to-emerald-950 rounded-lg shadow-lg flex flex-col justify-between p-2 shrink-0 border border-emerald-400">
+                            <span class="text-[7px] text-white font-black uppercase text-center block">5X MULTI</span>
+                            <div class="my-auto flex flex-col items-center">
+                                <span class="text-3xl font-black text-yellow-300 leading-none">5X</span>
+                                <span class="text-[7px] text-emerald-100 font-bold mt-1">Multiplikator</span>
+                            </div>
+                            <span class="text-[9px] text-emerald-950 bg-emerald-200 font-black rounded-sm py-0.5 text-center uppercase block">3 AZN</span>
+                        </div>
+                        <div class="flex-1 space-y-2.5 text-xs w-full">
+                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Necə oynanılır:</strong> Multiplikator (vurma) funksiyalı. Bilet üzərindəki çarpan xanaları uduş məbləğini dərhal qatlayır.</p></div>
+                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Minimal mərc:</strong> 3 AZN / <strong class="text-slate-300">Böyük uduş:</strong> 100,000 AZN</p></div>
+                            <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')" class="mt-2 w-full bg-slate-800 hover:bg-slate-700 text-slate-200 py-2 rounded-lg font-bold flex items-center justify-center space-x-1.5 transition">
+                                <i class="fa-solid fa-circle-play text-red-500"></i> <span>🎥 Video bax</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5 AZN: BƏXT AÇARI -->
+                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden">
+                    <div class="bg-slate-800/60 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-6 h-6 rounded bg-blue-600 text-white font-black flex items-center justify-center text-[10px]">5₼</span>
+                            <h4 class="font-bold text-sm text-yellow-500">Bəxt Açarı (Komp.)</h4>
+                        </div>
+                        <span class="text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded font-semibold">Ani Lotereya</span>
+                    </div>
+                    <div class="p-4 flex flex-col md:flex-row gap-4 items-center">
+                        <!-- Custom CSS Ticket Visual representing Bəxt Açarı -->
+                        <div class="w-24 h-36 bg-gradient-to-br from-indigo-800 via-blue-600 to-slate-900 rounded-lg shadow-lg flex flex-col justify-between p-2 shrink-0 border border-blue-400">
+                            <span class="text-[7px] text-white font-black uppercase text-center block">BƏXT AÇARI</span>
+                            <div class="my-auto flex flex-col items-center text-yellow-300 animate-pulse">
+                                <i class="fa-solid fa-key text-2xl"></i>
+                                <span class="text-[8px] font-bold text-white mt-1">100 000₼</span>
+                            </div>
+                            <span class="text-[9px] text-blue-950 bg-blue-200 font-black rounded-sm py-0.5 text-center uppercase block">5 AZN</span>
+                        </div>
+                        <div class="flex-1 space-y-2.5 text-xs w-full">
+                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Necə oynanılır:</strong> Kilid sahələri pozularaq açar simvolu tapılmalıdır. Tapılan hər bir açar simvolu müvafiq xanadakı uduş məbləğini dərhal aktivləşdirir.</p></div>
+                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Minimal mərc:</strong> 5 AZN / <strong class="text-slate-300">Böyük uduş:</strong> 100,000 AZN</p></div>
+                            <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')" class="mt-2 w-full bg-slate-800 hover:bg-slate-700 text-slate-200 py-2 rounded-lg font-bold flex items-center justify-center space-x-1.5 transition">
+                                <i class="fa-solid fa-circle-play text-red-500"></i> <span>🎥 Video bax</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10 AZN: SÜR QAZAN -->
+                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden">
+                    <div class="bg-slate-800/60 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-6 h-6 rounded bg-purple-600 text-white font-black flex items-center justify-center text-[10px]">10₼</span>
+                            <h4 class="font-bold text-sm text-yellow-400">Sür Qazan (Premium)</h4>
+                        </div>
+                        <span class="text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded font-semibold">Premium Ani</span>
+                    </div>
+                    <div class="p-4 flex flex-col md:flex-row gap-4 items-center">
+                        <!-- Custom CSS Ticket Visual representing Sür Qazan -->
+                        <div class="w-24 h-36 bg-gradient-to-br from-fuchsia-800 via-purple-600 to-slate-900 rounded-lg shadow-lg flex flex-col justify-between p-2 shrink-0 border border-purple-400">
+                            <span class="text-[6px] text-white font-black uppercase text-center block">SÜR QAZAN</span>
+                            <div class="my-auto flex flex-col items-center">
+                                <i class="fa-solid fa-car text-yellow-300 text-2xl"></i>
+                                <span class="text-[8px] font-bold text-white mt-1">200 000₼</span>
+                            </div>
+                            <span class="text-[9px] text-purple-950 bg-purple-200 font-black rounded-sm py-0.5 text-center uppercase block">10 AZN</span>
+                        </div>
+                        <div class="flex-1 space-y-2.5 text-xs w-full">
+                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Necə oynanılır:</strong> Avtomobil mövzulu premium bilet. Multiplikatorlar və xüsusi təkər (Sür) simvolları mövcuddur.</p></div>
+                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Minimal mərc:</strong> 10 AZN / <strong class="text-slate-300">Böyük uduş:</strong> 200,000 AZN</p></div>
+                            <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')" class="mt-2 w-full bg-slate-800 hover:bg-slate-700 text-slate-200 py-2 rounded-lg font-bold flex items-center justify-center space-x-1.5 transition">
+                                <i class="fa-solid fa-circle-play text-red-500"></i> <span>🎥 Video bax</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10 AZN: PRESTİJ -->
+                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden">
+                    <div class="bg-slate-800/60 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-6 h-6 rounded bg-purple-600 text-white font-black flex items-center justify-center text-[10px]">10₼</span>
+                            <h4 class="font-bold text-sm text-amber-500 tracking-wide font-serif">PRESTİJ (VIP)</h4>
+                        </div>
+                        <span class="text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded font-semibold">Premium Ani</span>
+                    </div>
+                    <div class="p-4 flex flex-col md:flex-row gap-4 items-center">
+                        <!-- Custom CSS Ticket Visual representing Prestij -->
+                        <div class="w-24 h-36 bg-gradient-to-br from-slate-800 via-amber-600 to-slate-950 rounded-lg shadow-lg flex flex-col justify-between p-2 shrink-0 border border-amber-400">
+                            <span class="text-[7px] text-amber-300 font-serif font-black uppercase text-center block">PRESTİJ</span>
+                            <div class="my-auto flex flex-col items-center">
+                                <i class="fa-solid fa-gem text-amber-300 text-2xl"></i>
+                                <span class="text-[8px] font-bold text-white mt-1">250 000₼</span>
+                            </div>
+                            <span class="text-[9px] text-amber-950 bg-amber-200 font-black rounded-sm py-0.5 text-center uppercase block">10 AZN</span>
+                        </div>
+                        <div class="flex-1 space-y-2.5 text-xs w-full">
+                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Necə oynanılır:</strong> Ən yüksək qiymətli VIP bilet növü. Çoxsaylı oyun zonası və uduş şansını qatlayan "Brilyant" simvolları var.</p></div>
+                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Minimal mərc:</strong> 10 AZN / <strong class="text-slate-300">Böyük uduş:</strong> 250,000 AZN</p></div>
+                            <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ')" class="mt-2 w-full bg-slate-800 hover:bg-slate-700 text-slate-200 py-2 rounded-lg font-bold flex items-center justify-center space-x-1.5 transition">
+                                <i class="fa-solid fa-circle-play text-red-500"></i> <span>🎥 Video bax</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Satış Texnikaları Bölməsi -->
-        <section id="satis">
-            <h2 class="section-title">3. Ümumi Satış Texnikaları və Müştəri Tələbatının Öyrənilməsi</h2>
-            <p>Sadəcə etirazlar deyil, müştəri tiplərinə görə düzgün yanaşma və rəsmi satış mərhələləri:</p>
-            
-            <table>
-                <thead>
-                    <tr>
-                        <th>Müştəri Seqmenti / Mərhələ</th>
-                        <th>Psixoloji Yanaşma və Tələbatın Öyrənilməsi</th>
-                        <th>Playbook Standartına Uyğun Satış Texnikası</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>"The Dreamer" (Xəyalpərəst)</strong>[cite: 1]</td>
-                        <td>Böyük uduşlar, böyük xəyallar və Cekpot məbləğləri ilə maraqlanır[cite: 1].</td>
-                        <td>Onlara birbaşa böyük Cekpotu olan tirajlı lotereyaları (məs. 4+4 və ya Beşdə 5) təklif edin[cite: 1]. Məbləği vurğulayın.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Tələbatın Öyrənilməsi (Kontakt mərhələsi)</strong></td>
-                        <td>Müştərinin nə qədər vaxtı olduğunu və hansı növ oyuna (sürətli yoxsa tirajlı) meylli olduğunu anlamaq.</td>
-                        <td>Açıq suallar verin: "Bu gün tirajda böyük şansınızı sınamaq istəyirsiniz, yoxsa elə indi pozub nəticəni görmək istərdiniz?"</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Düzgün Etiraz Cavablandırılması</strong></td>
-                        <td>Müştəri "Mənə uduş çıxmır" dedikdə aqressiv deyil, statistik arqumentlərlə cavab verilməlidir.</td>
-                        <td>"Hər oyunun rəsmi uduş şansı fərqlidir. Məsələn, Uğurlu 7 oyununda rəsmi olaraq hər 3 biletdən biri uduşludur, bəlkə bu dəfə şansınızı burda sınayasınız?"[cite: 1]</td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-- TAB 3: TERMİNALLAR -->
+        <section id="terminals" class="tab-content space-y-6">
+            <div class="border-b border-slate-800 pb-2">
+                <h2 class="text-lg font-bold">📱 Satış və Əməliyyat Terminalları</h2>
+                <p class="text-xs text-slate-400">Nöqtələrdə istifadə olunan rəsmi cihazlar üzrə interaktiv bələdçi</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Sunmi T2S -->
+                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden">
+                    <div class="bg-gradient-to-r from-blue-900/30 to-slate-900 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
+                        <div>
+                            <h3 class="font-bold text-sm text-white">Sunmi T2S</h3>
+                            <p class="text-[10px] text-slate-400">Stasionar Smart Terminal</p>
+                        </div>
+                        <i class="fa-solid fa-computer text-blue-400 text-lg"></i>
+                    </div>
+                    <div class="p-3 space-y-2">
+                        <button onclick="toggleAccordion('t2s-sales')" class="w-full bg-slate-800/50 hover:bg-slate-800 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center">
+                            <span>💼 Satış necə edilir?</span> <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                        </button>
+                        <div id="t2s-sales" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3"><p class="py-2 leading-relaxed">Menudan müvafiq oyunu seçin ➔ Kombinasiyaları daxil edin və ya "Avtomatik" seçin ➔ "Çap et" düyməsini sıxaraq bilet çekini müştəriyə təqdim edin.</p></div>
+
+                        <button onclick="toggleAccordion('t2s-reports')" class="w-full bg-slate-800/50 hover:bg-slate-800 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center">
+                            <span>📊 Hesabat necə çıxarılır?</span> <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                        </button>
+                        <div id="t2s-reports" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3"><p class="py-2 leading-relaxed">Admin panelinə daxil olun ➔ "Hesabatlar" bölməsini seçin ➔ Günlük (Z-Hesabat) və ya növbə hesabatını seçib "Çap et" vurun.</p></div>
+
+                        <button onclick="toggleAccordion('t2s-paper')" class="w-full bg-slate-800/50 hover:bg-slate-800 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center">
+                            <span>🧻 Kağız necə dəyişilir?</span> <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                        </button>
+                        <div id="t2s-paper" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3"><p class="py-2 leading-relaxed">Üst qapaqdakı mexaniki düyməni sıxıb açın ➔ Boş rulon bəstəsini çıxarın ➔ Yeni termal kağızı düzgün istiqamətdə (baxan tərəfə) yerləşdirib qapağı möhkəm bağlayın.</p></div>
+
+                        <button onclick="toggleAccordion('t2s-restart')" class="w-full bg-slate-800/50 hover:bg-slate-800 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center">
+                            <span>🔄 Restart necə edilir?</span> <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                        </button>
+                        <div id="t2s-restart" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3"><p class="py-2 leading-relaxed">Cihazın yan tərəfində yerləşən Power (Yandırma) düyməsini 3 saniyə basılı saxlayın ➔ Ekranda çıxan "Restart" (Yenidən başlat) əmrini təsdiqləyin.</p></div>
+                    </div>
+                </div>
+
+                <!-- Sunmi V3 Mix -->
+                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden">
+                    <div class="bg-gradient-to-r from-blue-900/30 to-slate-900 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
+                        <div>
+                            <h3 class="font-bold text-sm text-white">Sunmi V3 Mix</h3>
+                            <p class="text-[10px] text-slate-400">Mobil / Hibrid Planşet Terminal</p>
+                        </div>
+                        <i class="fa-solid fa-mobile-screen text-blue-400 text-lg"></i>
+                    </div>
+                    <div class="p-3 space-y-2">
+                        <button onclick="toggleAccordion('v3-sales')" class="w-full bg-slate-800/50 hover:bg-slate-800 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center">
+                            <span>💼 Satış necə edilir?</span> <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                        </button>
+                        <div id="v3-sales" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3"><p class="py-2 leading-relaxed">Sensor ekranda sürətli satış panelindən bilet növünü seçin ➔ Məbləği təyin edib "Təsdiqlə" düyməsini klikləyin ➔ İnteqrasiya olunmuş printer dərhal çeki çıxaracaq.</p></div>
+
+                        <button onclick="toggleAccordion('v3-reports')" class="w-full bg-slate-800/50 hover:bg-slate-800 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center">
+                            <span>📊 Hesabat necə çıxarılır?</span> <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                        </button>
+                        <div id="v3-reports" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3"><p class="py-2 leading-relaxed">Ekranın sağ yuxarı küncündəki profil simvoluna klikləyin ➔ "Növbə Sonu" menyusunu seçib "Z-Hesabat Çap Et" əmrini vurun.</p></div>
+
+                        <button onclick="toggleAccordion('v3-paper')" class="w-full bg-slate-800/50 hover:bg-slate-800 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center">
+                            <span>🧻 Kağız necə dəyişilir?</span> <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                        </button>
+                        <div id="v3-paper" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3"><p class="py-2 leading-relaxed">Arxa paneldə yerləşən kiçik kağız yuvasının mandalını yuxarı çəkin ➔ Rulonu yerləşdirib ucunu bir az çölə çıxarın və qapağı klik səsi gələnədək sıxın.</p></div>
+
+                        <button onclick="toggleAccordion('v3-restart')" class="w-full bg-slate-800/50 hover:bg-slate-800 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center">
+                            <span>🔄 Restart necə edilir?</span> <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                        </button>
+                        <div id="v3-restart" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3"><p class="py-2 leading-relaxed">Cihazın üst hissəsindəki qırmızı/qara düyməni uzun müddət sıxın ➔ Ekranda "Yenidən Başlat" rejimini aktivləşdirin.</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TEXNİKİ PROBLEMLƏR -->
+            <div class="bg-[#131c32] rounded-xl border border-slate-800 p-4 mt-6">
+                <div class="flex items-center space-x-2 border-b border-slate-800 pb-3 mb-3">
+                    <i class="fa-solid fa-screwdriver-wrench text-red-500"></i>
+                    <h3 class="font-bold text-sm text-white">Texniki Problemlər və Operativ Həllər</h3>
+                </div>
+                <div class="space-y-2 text-xs">
+                    <div class="p-3 bg-slate-900 rounded-lg border-l-4 border-red-500 flex items-start space-x-2">
+                        <span class="text-red-500 font-bold">❌</span>
+                        <div>
+                            <h4 class="font-bold text-white mb-0.5">İnternet yoxdur</h4>
+                            <p class="text-slate-400">Simli kabel əlaqəsini yoxlayın və ya terminalın Wi-Fi/4G tənzimləmələrindən şəbəkə statusunu yeniləyin. Cihazı restart edin.</p>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-slate-900 rounded-lg border-l-4 border-red-500 flex items-start space-x-2">
+                        <span class="text-red-500 font-bold">❌</span>
+                        <div>
+                            <h4 class="font-bold text-white mb-0.5">Kağız çıxarmır</h4>
+                            <p class="text-slate-400">Kağız bəstəsinin düzgün istiqamətdə qoyulduğundan və ya bitib-bitmədiyindən əmin olun. Printer yuvasını sıxışmış qalıqlardan təmizləyin. (Rulonun yazılı termal hissəsi mütləq bizə doğru, yəni yuxarı baxmalıdır).</p>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-slate-900 rounded-lg border-l-4 border-red-500 flex items-start space-x-2">
+                        <span class="text-red-500 font-bold">❌</span>
+                        <div>
+                            <h4 class="font-bold text-white mb-0.5">Donur</h4>
+                            <p class="text-slate-400">Arxa planda açıq qalan digər lazımsız proqramları bağlayın. Sistem resurslarını boşaltmaq üçün cihazı tamamilə söndürüb yenidən açın (Power düyməsini 10 saniyə sıxın).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
+        <!-- TAB 4: PARTNYOR STANDARTI -->
+        <section id="partner-standards" class="tab-content space-y-6">
+            <div class="border-b border-slate-800 pb-2">
+                <h2 class="text-lg font-bold">🤝 Uğurlu Partnyor Necə Olmalıdır?</h2>
+                <p class="text-xs text-slate-400">Playbook standartları və audit monitorinqi zamanı yoxlanılan kritik qaydalar</p>
+            </div>
+
+            <!-- Playbook Şəkilləri və Konstruksiyası Sahəsi -->
+            <div class="p-4 bg-gradient-to-br from-slate-900 to-slate-950 rounded-xl border border-slate-800 text-center text-xs text-slate-400 space-y-2">
+                <i class="fa-solid fa-images text-slate-600 text-3xl block mb-1"></i>
+                <p>📸 <strong class="text-slate-200">Bölmə Monitorinqi:</strong> Bu hissədə rəsmi playbook daxilində yer alan əyani nümunəvi fotoşəkillər və bilet planoqramları yerləşdirilir.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- DÜZGÜN STANDARTLAR (MÜSBƏT) -->
+                <div class="bg-emerald-950/20 border border-emerald-500/20 rounded-xl overflow-hidden">
+                    <div class="bg-emerald-500/10 px-4 py-2.5 border-b border-emerald-500/20 text-emerald-400 font-bold text-xs flex items-center space-x-2">
+                        <i class="fa-solid fa-circle-check"></i> <span>İdeal və İstənilən Standart</span>
+                    </div>
+                    <div class="p-4 space-y-3 text-xs">
+                        <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><div><h4 class="font-semibold text-slate-200">Təmiz satış nöqtəsi</h4><p class="text-slate-400 text-[11px] mt-0.5">Tezgahın üstü hər zaman təmiz, səliqəli və biletlər ardıcıl olmalıdır.</p></div></div>
+                        <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><div><h4 class="font-semibold text-slate-200">Reklam materialları görünür</h4><p class="text-slate-400 text-[11px] mt-0.5">POS materiallar, uduş afişaları müştərinin birbaşa diqqətini çəkən yerdə olmalıdır.</p></div></div>
+                        <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><div><h4 class="font-semibold text-slate-200">Müştərini salamlayır</h4><p class="text-slate-400 text-[11px] mt-0.5">Hər bir yaxınlaşan şəxsə gülərüz yanaşma və ilk 10 saniyədə göz təması ilə səmimi salamlaşma.</p></div></div>
+                        <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><div><h4 class="font-semibold text-slate-200">Daimi müştəri loyallığı</h4><p class="text-slate-400 text-[11px] mt-0.5">Daimi gələn müştərilərin adını öyrənib, onlara adı ilə müraciət etmək sadiqlik yaradır.</p></div></div>
+                    </div>
+                </div>
+
+                <!-- SƏHV STANDARTLAR (MƏNFİ) -->
+                <div class="bg-red-950/20 border border-red-500/20 rounded-xl overflow-hidden">
+                    <div class="bg-red-500/10 px-4 py-2.5 border-b border-red-500/20 text-red-400 font-bold text-xs flex items-center space-x-2">
+                        <i class="fa-solid fa-circle-xmark"></i> <span>Yolverilməz Hallar (Audit Cərimələri)</span>
+                    </div>
+                    <div class="p-4 space-y-3 text-xs">
+                        <div class="flex items-start"><span class="text-red-500 font-bold mr-2">❌</span><div><h4 class="font-semibold text-slate-200">Terminalın üstü dağınıq</h4><p class="text-slate-400 text-[11px] mt-0.5">Şəxsi əşyaların, fincan və ya kənar kağızların terminal ətrafına qoyulması qadağandır.</p></div></div>
+                        <div class="flex items-start"><span class="text-red-500 font-bold mr-2">❌</span><div><h4 class="font-semibold text-slate-200">Laqeyd bədən dili</h4><p class="text-slate-400 text-[11px] mt-0.5">Müştəri qarşısında əlləri cibdə saxlamaq və ya qolları çarpazlamaq qəti qadağandır.</p></div></div>
+                        <div class="flex items-start"><span class="text-red-500 font-bold mr-2">❌</span><div><h4 class="font-semibold text-slate-200">Telefonda danışır</h4><p class="text-slate-400 text-[11px] mt-0.5">Müştəri yaxınlaşdıqda şəxsi telefonla diqqəti yayındırmaq kobud qayda pozuntusudur.</p></div></div>
+                        <div class="flex items-start"><span class="text-red-500 font-bold mr-2">❌</span><div><h4 class="font-semibold text-slate-200">Müştəriyə passiv yanaşır</h4><p class="text-slate-400 text-[11px] mt-0.5">Çarpaz satış etməmək, müştəriyə yeni və ya böyük cekpotlu oyunları təklif etməmək.</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 5: SATIŞ TEXNİKALARI -->
+        <section id="sales-techniques" class="tab-content space-y-6">
+            <div class="border-b border-slate-800 pb-2">
+                <h2 class="text-lg font-bold">🎯 Satış Texnikaları və Müştəri Psixologiyası</h2>
+                <p class="text-xs text-slate-400">Playbook üzrə müştəri tipləri və etirazlara qarşı peşəkar cavablar</p>
+            </div>
+
+            <!-- Müştəri Tipləri Blokları -->
+            <div class="space-y-4">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Müştəri Tipləri ilə İş Standartı:</h3>
+                
+                <!-- The Dreamer -->
+                <div class="bg-[#131c32] p-4 rounded-xl border border-slate-800">
+                    <span class="text-[10px] uppercase font-bold text-red-400 tracking-wider">Müştəri Tipi 1: "The Dreamer" (Xəyalpərəst)</span>
+                    <h4 class="font-bold text-sm mt-1 text-white">Böyük uduşlara və Cekpot məbləğlərinə həssas olan müştəri</h4>
+                    <p class="text-xs text-slate-300 mt-2">Bu müştəriyə aşağı qiymətli ($1$ və ya $2$ AZN-lik) biletləri təklif etməyin! Onlara birbaşa böyük Cekpotu olan tirajlı lotereyaları (məs. 4+4 və ya Beşdə 5) təklif edin.</p>
+                </div>
+
+                <!-- The Strategist -->
+                <div class="bg-[#131c32] p-4 rounded-xl border border-slate-800">
+                    <span class="text-[10px] uppercase font-bold text-amber-400 tracking-wider">Müştəri Tipi 2: "The Strategist" (Strateq)</span>
+                    <h4 class="font-bold text-sm mt-1 text-white">Hər paketin daxilindəki uduş payını hesablamağa çalışan müştəri</h4>
+                    <p class="text-xs text-slate-300 mt-2">"Bu paket təzədir?", "Uduş çıxıb?" deyə soruşan bu müştəriyə qarşı hər zaman dürüst olun. Yeni oyun paketlərini onların gözü önündə açmaq ("Paket Açılışı" texnikası) inamı maksimuma qaldırır.</p>
+                </div>
+
+                <!-- The Ritualist -->
+                <div class="bg-[#131c32] p-4 rounded-xl border border-slate-800">
+                    <span class="text-[10px] uppercase font-bold text-purple-400 tracking-wider">Müştəri Tipi 3: "The Ritualist" (Ritualist)</span>
+                    <h4 class="font-bold text-sm mt-1 text-white">Xüsusi bilet seçim adətləri və ritualları olan loyal müştəri</h4>
+                    <p class="text-xs text-slate-300 mt-2">Onların vərdişlərinə (məs. sevdiyi bilet növü, xüsusi çəkim ritualı) hörmətlə yanaşın. Müştərinin neqativ ifadələrini dəstəkləməyin, bilet haqqında həddindən artıq dərin texniki detallar verib onları yormayın.</p>
+                </div>
+            </div>
+
+            <!-- İnteraktiv Etiraz-Cavab Kartları -->
+            <div class="space-y-3 mt-4">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Kritik Müştəri Etiraz Ssenariləri:</h3>
+                
+                <div class="bg-[#131c32] p-4 rounded-xl border border-slate-800">
+                    <span class="text-[10px] uppercase font-bold text-red-400 tracking-wider">Etiraz 1: "Uduşlar niyə bu qədər azdır, heç nə çıxmır?"</span>
+                    <div class="mt-3 p-3 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs rounded-lg leading-relaxed">
+                        <strong class="block text-white mb-1">💡 Rəsmi Cavab Skripti (Playbook):</strong>
+                        "Oyunlarımızın uduş fondunun faizi qanuni olaraq bilet növündən asılı olaraq 63% ilə 70.48% arasında tamamilə sabitdir. Bu standart beynəlxalq səviyyədə qəbul edilmiş ən yüksək uduş faizlərindən biridir. Hər şey sizin şansınızdan asılıdır, gəlin bu gün fərqli bir biletlə bəxtinizi yoxlayaq!"
+                    </div>
+                </div>
+
+                <div class="bg-[#131c32] p-4 rounded-xl border border-slate-800">
+                    <span class="text-[10px] uppercase font-bold text-red-400 tracking-wider">Etiraz 2: "Niyə ucuz bilet əvəzinə daha baha bilet almalıyam?"</span>
+                    <div class="mt-3 p-3 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs rounded-lg leading-relaxed">
+                        <strong class="block text-white mb-1">💡 Rəsmi Cavab Skripti (Playbook):</strong>
+                        "Qiyməti yüksək olan premium oyunlarda böyük uduş məbləği fərqli olsa da, orta məbləğli uduşların (məsələn, 50, 100, 200 AZN) qazanılma şansı və uduş faizi digərlərinə nisbətən daha yüksəkdir."
+                    </div>
+                </div>
+
+                <div class="bg-[#131c32] p-4 rounded-xl border border-slate-800">
+                    <span class="text-[10px] uppercase font-bold text-red-400 tracking-wider">Etiraz 3: "Mənə öz əlinizlə bir bilet çəkin"</span>
+                    <div class="mt-3 p-3 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs rounded-lg leading-relaxed">
+                        <strong class="block text-white mb-1">💡 Rəsmi Cavab Skripti (Playbook):</strong>
+                        "Böyük məmnuniyyətlə! Mənim əlimdən seçilən biletlərdən çox uduşlar olub. İnanıram ki, bu bilet də sizə uğur gətirəcək!" (gülümsəyərək təqdim edin).
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER NAVİQASİYA (MÜASİR ALT MENYU) -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-[#0a0f1d]/95 backdrop-blur-md border-t border-slate-800 py-3 px-1 z-50 shadow-2xl">
+        <div class="max-w-4xl mx-auto flex justify-around items-center">
+            
+            <button onclick="switchTab('home')" id="nav-home" class="flex flex-col items-center space-y-1 text-red-500 transition active:scale-95 group">
+                <i class="fa-solid fa-house text-lg"></i>
+                <span class="text-[10px] font-bold tracking-tight">Ana səhifə</span>
+            </button>
+
+            <button onclick="switchTab('products')" id="nav-products" class="flex flex-col items-center space-y-1 text-slate-400 hover:text-slate-200 transition active:scale-95 group">
+                <i class="fa-solid fa-cubes text-lg"></i>
+                <span class="text-[10px] font-bold tracking-tight">Məhsullar</span>
+            </button>
+
+            <button onclick="switchTab('terminals')" id="nav-terminals" class="flex flex-col items-center space-y-1 text-slate-400 hover:text-slate-200 transition active:scale-95 group">
+                <i class="fa-solid fa-terminal text-lg"></i>
+                <span class="text-[10px] font-bold tracking-tight">Terminallar</span>
+            </button>
+
+            <button onclick="switchTab('partner-standards')" id="nav-partner-standards" class="flex flex-col items-center space-y-1 text-slate-400 hover:text-slate-200 transition active:scale-95 group">
+                <i class="fa-solid fa-handshake text-lg"></i>
+                <span class="text-[10px] font-bold tracking-tight">Partnyor</span>
+            </button>
+
+            <button onclick="switchTab('sales-techniques')" id="nav-sales-techniques" class="flex flex-col items-center space-y-1 text-slate-400 hover:text-slate-200 transition active:scale-95 group">
+                <i class="fa-solid fa-lightbulb text-lg"></i>
+                <span class="text-[10px] font-bold tracking-tight">Satış Tex.</span>
+            </button>
+
+        </div>
+    </nav>
+
+    <!-- VİDEO MODAL SİMULYASİYASI -->
+    <div id="videoModal" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-[#131c32] w-full max-w-xl rounded-xl border border-slate-800 p-4 relative">
+            <button onclick="closeVideoModal()" class="absolute -top-10 right-0 text-white hover:text-slate-300 font-bold text-sm bg-slate-800 h-8 w-8 rounded-full flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="aspect-video w-full rounded-lg overflow-hidden bg-black">
+                <iframe id="modalIframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="mt-3 text-center">
+                <p class="text-xs text-slate-400">▶️ Playbook Video Rəhbər Simulyasiyası</p>
+            </div>
+        </div>
     </div>
 
-    <div class="footer">
-        <p>&copy; 2026 Azərlotereya ASC. Partnyor Təlimat Portalı - Bütün hüquqlar qorunur.</p>
-    </div>
+    <!-- JAVASCRIPT LOGICS -->
+    <script>
+        // Tab Dəyişdirmə Funksiyası
+        function switchTab(tabId) {
+            // Əgər sürətli keçid ankoru sıxılıbsa və hədəf eyni səhifədədirsə
+            if (tabId === 'home-videos-anchor') {
+                // Əvvəlcə ana səhifə tabını aktiv et
+                document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+                document.getElementById('home').classList.add('active');
+                updateNavButtons('home');
+                
+                // Sonra həmin elementə hamar sürüşdür
+                setTimeout(() => {
+                    document.getElementById('home-videos-anchor').scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+                return;
+            }
+
+            // Bütün tabları gizlət
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.remove('active');
+            });
+
+            // Seçilən tabı göstər
+            const targetTab = document.getElementById(tabId);
+            if (targetTab) {
+                targetTab.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Naviqasiya düymələrinin rənglərini yenilə
+            updateNavButtons(tabId);
+        }
+
+        function updateNavButtons(activeTabId) {
+            const buttons = {
+                'home': 'nav-home',
+                'products': 'nav-products',
+                'terminals': 'nav-terminals',
+                'partner-standards': 'nav-partner-standards',
+                'sales-techniques': 'nav-sales-techniques'
+            };
+
+            Object.keys(buttons).forEach(key => {
+                const btn = document.getElementById(buttons[key]);
+                if (btn) {
+                    if (key === activeTabId) {
+                        btn.classList.remove('text-slate-400');
+                        btn.classList.add('text-red-500');
+                    } else {
+                        btn.classList.remove('text-red-500');
+                        btn.classList.add('text-slate-400');
+                    }
+                }
+            });
+        }
+
+        // Məhsul Daxili Alt-Tab Keçidi (Tirajlı / Poz-Qazan)
+        function toggleProductSubTab(type) {
+            const tirajliDiv = document.getElementById('product-subtab-tirajli');
+            const pozqazanDiv = document.getElementById('product-subtab-pozqazan');
+            const btnTirajli = document.getElementById('subtab-btn-tirajli');
+            const btnPozqazan = document.getElementById('subtab-btn-pozqazan');
+
+            if (type === 'tirajli') {
+                tirajliDiv.classList.remove('hidden');
+                pozqazanDiv.classList.add('hidden');
+                
+                btnTirajli.className = "flex-1 py-2 text-center text-xs font-medium rounded-md bg-red-600 text-white transition";
+                btnPozqazan.className = "flex-1 py-2 text-center text-xs font-medium rounded-md text-slate-400 hover:text-white transition";
+            } else {
+                tirajliDiv.classList.add('hidden');
+                pozqazanDiv.classList.remove('hidden');
+
+                btnTirajli.className = "flex-1 py-2 text-center text-xs font-medium rounded-md text-slate-400 hover:text-white transition";
+                btnPozqazan.className = "flex-1 py-2 text-center text-xs font-medium rounded-md bg-red-600 text-white transition";
+            }
+        }
+
+        // İnteraktiv Accordion Funksiyası (Terminallar üçün)
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            if (!content) return;
+            
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                content.style.maxHeight = '0px';
+                content.style.paddingTop = '0px';
+                content.style.paddingBottom = '0px';
+            } else {
+                content.classList.add('open');
+                content.style.maxHeight = content.scrollHeight + 'px';
+                content.style.paddingTop = '8px';
+                content.style.paddingBottom = '8px';
+            }
+        }
+
+        // Video Modal Pəncərə İdarəolunması
+        function openVideoModal(videoUrl) {
+            document.getElementById('modalIframe').src = videoUrl;
+            document.getElementById('videoModal').classList.remove('hidden');
+        }
+
+        function closeVideoModal() {
+            document.getElementById('videoModal').classList.add('hidden');
+            document.getElementById('modalIframe').src = '';
+        }
+    </script>
 
 </body>
 </html>
