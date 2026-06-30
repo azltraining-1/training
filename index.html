@@ -27,23 +27,10 @@
         }
     </script>
     <style>
-        /* Smooth scrolling inside components */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        /* Custom dynamic animations */
-        @keyframes slideUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        .animate-slide-up {
-            animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        /* Simulated screen view for better laptop/desktop testing visualization */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .animate-slide-up { animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         @media (min-width: 640px) {
             .mobile-frame {
                 max-width: 410px;
@@ -57,36 +44,21 @@
 </head>
 <body class="bg-[#050714] font-sans text-slate-100 min-h-screen flex flex-col items-center justify-center antialiased">
 
-    <div id="offline-banner" class="hidden fixed top-4 mx-4 max-w-sm bg-rose-950 border border-brandRed/50 p-4 rounded-xl z-50 shadow-2xl flex items-start gap-3">
-        <div class="w-8 h-8 rounded-lg bg-brandRed/20 flex items-center justify-center text-brandRed shrink-0 mt-0.5">
-            <i class="fas fa-wifi-slash text-sm"></i>
-        </div>
-        <div class="flex-1">
-            <h4 class="text-xs font-bold text-white uppercase">İnternet Bağlantısı Tapılmadı!</h4>
-            <p class="text-[10px] text-slate-300 mt-1 leading-relaxed">
-                Bu faylı ilk dəfə açarkən **internet bağlantısı aktiv olmalıdır**. Əks halda dizayn kitabxanaları və ikonlar düzgün göstərilməyəcək.
-            </p>
-        </div>
-        <button onclick="document.getElementById('offline-banner').classList.add('hidden')" class="text-slate-400 hover:text-white">
-            <i class="fas fa-times text-xs"></i>
-        </button>
-    </div>
-
     <div class="mobile-frame w-full min-h-screen sm:h-[800px] bg-brandDarkBlue flex flex-col relative overflow-hidden transition-all duration-300">
         
         <div class="bg-brandDarkBlue px-6 pt-3 pb-1 flex justify-between items-center text-xs text-slate-400 z-30 select-none">
             <span class="font-semibold">09:41</span>
             <div class="flex items-center gap-1.5">
-                <i class="fas fa-signal" id="status-signal"></i>
-                <i class="fas fa-wifi" id="status-wifi"></i>
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
                 <i class="fas fa-battery-three-quarters text-sm text-emerald-400"></i>
             </div>
         </div>
 
         <header class="bg-brandDarkBlue border-b border-slate-800 px-6 py-4 flex justify-between items-center z-20 shadow-lg">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 flex items-center justify-center shrink-0">
-                    <img src="logo_only.png" alt="Azərlotereya Loqo" class="w-full h-full object-contain">
+                <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-lg shrink-0 overflow-hidden p-0.5">
+                    <img src="logo_only.png" alt="Azərlotereya" class="w-full h-full object-contain">
                 </div>
                 <div>
                     <h1 class="text-base font-extrabold tracking-tight text-white flex items-center gap-1.5">
@@ -99,13 +71,9 @@
                 <button onclick="toggleInfoModal()" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 transition-colors">
                     <i class="fas fa-question text-xs"></i>
                 </button>
-                <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse mt-3 mr-1"></div>
             </div>
         </header>
 
-        <main class="flex-1 overflow-y-auto px-5 pt-4 pb-28 no-scrollbar z-10" id="main-content">
-            
-            </main>
-    </div>
+        </div>
 </body>
 </html>
