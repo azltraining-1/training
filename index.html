@@ -100,7 +100,60 @@
                 </p>
                 <div class="pt-3 border-t border-slate-800/80 text-xs text-slate-400 flex justify-between items-center">
                     <span>Azərlotereya ASC</span>
-                    <span class="text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check"></i> 100% Qanuni və Şəffaf</span>
+                    <button onclick="toggleCompanyDetails()" class="text-emerald-400 font-semibold hover:text-emerald-300 transition flex items-center space-x-1 focus:outline-none select-none">
+                        <i class="fa-solid fa-circle-check"></i> 
+                        <span>100% Qanuni və Şəffaf</span>
+                        <i id="company-arrow" class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform duration-300"></i>
+                    </button>
+                </div>
+
+                <!-- Şirkət Missiya, Vizyon və Dəyərlər ( image_77893a.png və image_778c9a.jpg-dən ) -->
+                <div id="company-details" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out border-t border-slate-800/60 mt-3 pt-3 space-y-4">
+                    <!-- Şirkəti Tanı (Slide 1) -->
+                    <div>
+                        <h4 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2 border-b border-slate-800 pb-1">
+                            <i class="fa-solid fa-building mr-1"></i> Şirkəti Tanı
+                        </h4>
+                        <div class="space-y-2 text-[11px] text-slate-300 leading-relaxed">
+                            <div>
+                                <strong class="text-white uppercase tracking-wider text-[10px] block mb-0.5"><i class="fa-solid fa-star text-red-500 mr-1"></i> Missiya</strong>
+                                <p>Müştərilərə əyləncəli və şəffaf oyun təcrübəsi yaradan, müxtəlif sosial layihələri dəstəkləyən lotereya və idman mərc oyunlarının etibarlı təşkilini təmin etmək.</p>
+                            </div>
+                            <div>
+                                <strong class="text-white uppercase tracking-wider text-[10px] block mb-0.5"><i class="fa-solid fa-eye text-cyan-400 mr-1"></i> Vizyon</strong>
+                                <p>Azərbaycanda sevilən lotereya və aparıcı idman mərc oyunları brendi olmaq, müxtəlif sahələrdə xeyirli işlərlə cəmiyyətin inkişafına mühüm töhfə vermək.</p>
+                            </div>
+                            <div>
+                                <strong class="text-white uppercase tracking-wider text-[10px] block mb-0.5"><i class="fa-solid fa-bullseye text-emerald-500 mr-1"></i> Məqsəd</strong>
+                                <p>İnsanların rifah halının yüksəlməsi və cəmiyyətə töhfə verməsi üçün şəffaf və məsuliyyətli lotereya və idman mərc oyunları təcrübəsi yaratmaq.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Şirkətin Dəyərləri (Slide 2) -->
+                    <div>
+                        <h4 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2 border-b border-slate-800 pb-1">
+                            <i class="fa-solid fa-heart mr-1"></i> Şirkətin Dəyərləri
+                        </h4>
+                        <div class="space-y-2 text-[11px] text-slate-300 leading-relaxed">
+                            <div>
+                                <strong class="text-white uppercase tracking-wider text-[10px] block mb-0.5"><i class="fa-solid fa-circle-check text-emerald-500 mr-1"></i> Dürüstlük</strong>
+                                <p>Biz fəaliyyətimizdə doğru və etibarlı davranışı əsas prinsip kimi qəbul edirik. Müştəriyə və tərəfdaşlara yanlış və ya şişirdilmiş məlumat verilmir.</p>
+                            </div>
+                            <div>
+                                <strong class="text-white uppercase tracking-wider text-[10px] block mb-0.5"><i class="fa-solid fa-magnifying-glass text-blue-400 mr-1"></i> Şəffaflıq</strong>
+                                <p>Bütün proseslərimiz açıq və izlənilə biləndir. Qaydalar, şərtlər və risklər müştəriyə aydın şəkildə təqdim olunur.</p>
+                            </div>
+                            <div>
+                                <strong class="text-white uppercase tracking-wider text-[10px] block mb-0.5"><i class="fa-solid fa-users text-rose-500 mr-1"></i> Müştəri Yönümlülük</strong>
+                                <p>Müştəri məmnuniyyəti fəaliyyətimizin mərkəzindədir. Hər qərar müştəri təcrübəsini yaxşılaşdırmaq məqsədi daşıyır.</p>
+                            </div>
+                            <div>
+                                <strong class="text-white uppercase tracking-wider text-[10px] block mb-0.5"><i class="fa-solid fa-earth-americas text-teal-400 mr-1"></i> Sosial Məsuliyyət</strong>
+                                <p>Fəaliyyətimiz cəmiyyətə zərər vermədən və məsuliyyətli oyun prinsiplərinə uyğun həyata keçirilir. 18+ qaydası və etik satış davranışı əsas prioritetdir.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1714,6 +1767,21 @@
                 title.innerText = "Daha çox oxumaq lazımdır!";
                 title.className = "text-lg font-bold text-amber-500";
                 desc.innerHTML = `Nəticəniz: <strong>${score} / ${quizData.length} (${percent}%)</strong>.<br>Audit monitorinqi zamanı çətinlik çəkməmək üçün təlimatları bir daha nəzərdən keçirməyi tövsiyə edirik.`;
+            }
+        }
+
+        // Şirkət Missiya, Vizyon və Dəyərlərinin Dropdown İdarəetməsi
+        function toggleCompanyDetails() {
+            const details = document.getElementById('company-details');
+            const arrow = document.getElementById('company-arrow');
+            if (!details || !arrow) return;
+
+            if (details.style.maxHeight && details.style.maxHeight !== '0px') {
+                details.style.maxHeight = '0px';
+                arrow.classList.remove('rotate-180');
+            } else {
+                details.style.maxHeight = details.scrollHeight + 'px';
+                arrow.classList.add('rotate-180');
             }
         }
     </script>
