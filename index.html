@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Azərlotereya - Onboarding Portalı</title>
-    <!-- Tailwind CSS və Font Awesome Kitabxanalarının yüklənməsi -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome İkonları -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -76,6 +77,7 @@
 
     <main class="max-w-4xl mx-auto px-4 pt-6">
 
+        <!-- TAB 1: ANA SƏHİFƏ -->
         <section id="home" class="tab-content active space-y-6">
             
             <!-- Rəsmi Onboarding Motivasiya Banneri -->
@@ -149,6 +151,7 @@
             </div>
         </section>
 
+        <!-- TAB 2: MƏHSULLAR -->
         <section id="products" class="tab-content space-y-6">
             <!-- Daxili Alt Menu (Tirajlı və Poz-Qazan keçidləri) -->
             <div class="flex p-1 bg-[#131c32] rounded-lg border border-slate-800">
@@ -220,7 +223,7 @@
                     </div>
                     <div class="p-4 space-y-2.5 text-xs">
                         <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Necə oynanılır:</strong> İştirakçı 1-dən 80-ə qədər olan rəqəmlərdən 1-dən 10-a qədər seçim edir, tirajda isə 20 rəqəm çıxarılır.</p></div>
-                        <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Tiraj vaxtı:</strong> Hər 5 dəqiqədən bir keçirilir, nəticələr dərhal öyrənilir.</p></div>
+                        <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Tiraj vaxtı:</strong> Hər 5 dəqiqədən bir keçirilir, nətcələr dərhal öyrənilir.</p></div>
                         <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Minimal mərc:</strong> 1 AZN</p></div>
                         <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Böyük uduş:</strong> "Misli", "Çarpan" və "Qızıl Rəqəm" seçimlərini tam aktiv etməklə qazanılması mümkün olan maksimal uduş limiti 1,500,000 AZN təşkil edir.</p></div>
                         <button onclick="openVideoModal('https://www.youtube.com/embed/xnqVT1DtnIM')" class="mt-2 w-full bg-slate-800 hover:bg-slate-700 text-slate-200 py-2.5 rounded-lg font-bold flex items-center justify-center space-x-1.5 transition">
@@ -314,6 +317,7 @@
             </div>
         </section>
 
+        <!-- TAB 3: TERMİNALLAR -->
         <section id="terminals" class="tab-content space-y-6">
             <div class="border-b border-slate-800 pb-2">
                 <h2 class="text-lg font-bold">📱 Satış və Əməliyyat Terminalları</h2>
@@ -328,53 +332,359 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- Wave Terminalı Accordionları -->
-                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden">
-                    <div class="bg-gradient-to-r from-blue-900/30 to-slate-900 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
-                        <div>
-                            <h3 class="font-bold text-sm text-white">Wave Terminalı</h3>
-                            <p class="text-[10px] text-slate-400">Mərkəzi Satış və Validasiya Sistemi</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- 1. WAVE TERMİNALI -->
+                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="bg-gradient-to-r from-blue-900/30 to-slate-900 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
+                            <div>
+                                <h3 class="font-bold text-sm text-white">Wave Terminalı</h3>
+                                <p class="text-[10px] text-slate-400">İdman Mərcləri və Virtual İdman Sistemi</p>
+                            </div>
+                            <i class="fa-solid fa-desktop text-blue-400 text-lg"></i>
                         </div>
-                        <i class="fa-solid fa-desktop text-blue-400 text-lg"></i>
-                    </div>
-                    <div class="p-3 space-y-2">
-                        <button onclick="toggleAccordion('wave-red-x')" class="w-full bg-slate-800/50 hover:bg-slate-800 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center">
-                            <span>❌ Qırmızı X xətası (İnternet yoxdur)</span> <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
-                        </button>
-                        <div id="wave-red-x" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3"><p class="py-2 leading-relaxed">İlk növbədə sağ aşağı küncdəki <strong>Tarix və Saatın</strong> düzgün olduğunu yoxlayın. Əgər tarix/saat yanlışdırsa, sistem dərhal bağlantını bloklayacaq. Saatı düzəldib cihazı restart edin.</p></div>
+                        
+                        <div class="p-4 space-y-3">
+                            <!-- Özəllikləri -->
+                            <button onclick="toggleAccordion('wave-specs')" class="w-full bg-slate-800/60 hover:bg-slate-800 p-2.5 rounded-lg text-left text-xs font-semibold flex justify-between items-center transition">
+                                <span class="text-blue-400"><i class="fa-solid fa-circle-info mr-1.5"></i> Wave Özəllikləri & Təyinatı</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="wave-specs" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <div class="py-2.5 space-y-2 leading-relaxed">
+                                    <p><strong>Təyinatı:</strong> Əsasən İdman Mərc Oyunları (Misli) və Virtual İdman oyunları üçün xüsusi olaraq dizayn edilmişdir.</p>
+                                    <p><strong>İmkanları:</strong> Həmçinin tirajlı lotereya satışı və poz-qazan biletlərinin validasiyası (sistemdə yoxlanılması) sürətlə icra edilə bilər.</p>
+                                    <p><strong>Tərkibi:</strong> Böyük və aydın rəngli monitor, daxili skaner mexanizmi, daxili çap bloku və xarici Ricon modem inteqrasiyası.</p>
+                                </div>
+                            </div>
 
-                        <button onclick="toggleAccordion('wave-modem')" class="w-full bg-slate-800/50 hover:bg-slate-800 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center">
-                            <span>🔌 Ricon Modem qoşulma qaydası</span> <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
-                        </button>
-                        <div id="wave-modem" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3"><p class="py-2 leading-relaxed">Məntəqə provayderindən gələn internet kabeli mütləq modemin <strong>WAN</strong> portuna taxılmalıdır. Terminaldan gələn mavi/sarı kabel isə <strong>LAN1</strong> portuna daxil edilməlidir.</p></div>
+                            <div class="border-t border-slate-800 my-2 pt-2">
+                                <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-2">Texniki Problemlər və Həlli</p>
+                            </div>
+
+                            <!-- Problem 1 -->
+                            <button onclick="toggleAccordion('wave-p1')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
+                                <span>❌ 1. Qırmızı X xətası (İnternet yoxdur)</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="wave-p1" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <p class="py-2.5 leading-relaxed">
+                                    <strong>Həlli:</strong> İlk növbədə sağ aşağı küncdəki <strong>Tarix və Saatın</strong> düzgünlüyünü yoxlayın. Əgər tarix və ya saat yanlışdırsa, sistem bağlantını bloka salır. Saatı düzəldib terminalı restart edin. Problem davam edərsə şəbəkə kabelini yoxlayın.
+                                </p>
+                            </div>
+
+                            <!-- Problem 2 -->
+                            <button onclick="toggleAccordion('wave-p2')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
+                                <span>🔌 2. Ricon Modem bağlantı qaydası</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="wave-p2" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <p class="py-2.5 leading-relaxed">
+                                    <strong>Həlli:</strong> Provayderdən gələn internet kabeli Ricon modemin mütləq <strong>WAN</strong> portuna qoşulmalıdır. Terminaldan gələn mavi/sarı kabel isə modemdəki <strong>LAN1</strong> portuna taxılmalıdır. Kabellərin klik səsi ilə tam oturduğundan əmin olun.
+                                </p>
+                            </div>
+
+                            <!-- Problem 3 -->
+                            <button onclick="toggleAccordion('wave-p3')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
+                                <span>📶 3. Daxili Sim Karta keçid proseduru</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="wave-p3" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <p class="py-2.5 leading-relaxed">
+                                    <strong>Həlli:</strong> Provayder xətti tamamilə kəsildikdə daxili sim karta keçmək üçün öncə terminalı və modemi söndürün. WAN portundakı kabeli çıxarın (yalnız terminal kabeli LAN1-də qalsın) və cihazları yenidən başladın. Cihaz 3-4 dəqiqə ərzində avtomatik mobil internetə keçəcəkdir.
+                                </p>
+                            </div>
+
+                            <!-- Problem 4 -->
+                            <button onclick="toggleAccordion('wave-p4')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
+                                <span>🖥️ 4. Ekranın tamamilə qaralması</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="wave-p4" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <p class="py-2.5 leading-relaxed">
+                                    <strong>Həlli:</strong> Sistem işlədiyi (səslər gəldiyi) halda monitorda heç bir görüntü yoxdursa, ekranı yavaşca arxaya doğru əyin və onun dərhal aşağısında yerləşən ağ rəngli daxili monitor kabellərinin və konnektorların tam qoşulduğunu, gərgin olmadığını yoxlayın.
+                                </p>
+                            </div>
+
+                            <!-- Problem 5 -->
+                            <button onclick="toggleAccordion('wave-p5')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
+                                <span>🔍 5. Skanerdə kupon / bilet oxunmaması</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="wave-p5" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <p class="py-2.5 leading-relaxed">
+                                    <strong>Həlli:</strong> Toz və kağız lifləri skaneri korlayır. Skaner qapağını açaraq daxili qara rezin fırlanan çarxları (rolikləri) və ortadakı şəffaf şüşə paneli pambıq bezə spirt vuraraq yaxşıca silib təmizləyin.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Sunmi V3 Mix & T2s -->
-                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden">
-                    <div class="bg-gradient-to-r from-blue-900/30 to-slate-900 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
-                        <div>
-                            <h3 class="font-bold text-sm text-white">Sunmi V3 Mix & T2s</h3>
-                            <p class="text-[10px] text-slate-400">Masaüstü və Planşet Həlləri</p>
+                <!-- 2. SUNMI T2S -->
+                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="bg-gradient-to-r from-blue-900/30 to-slate-900 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
+                            <div>
+                                <h3 class="font-bold text-sm text-white">Sunmi T2s</h3>
+                                <p class="text-[10px] text-slate-400">İki Ekranlı Masaüstü Market Terminalı</p>
+                            </div>
+                            <i class="fa-solid fa-computer text-blue-400 text-lg"></i>
                         </div>
-                        <i class="fa-solid fa-computer text-blue-400 text-lg"></i>
-                    </div>
-                    <div class="p-3 space-y-2">
-                        <button onclick="toggleAccordion('sunmi-print-fail')" class="w-full bg-slate-800/50 hover:bg-slate-800 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center">
-                            <span>🎟 Bilet çap olmadı, amma balans silindi</span> <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
-                        </button>
-                        <div id="sunmi-print-fail" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3"><p class="py-2 leading-relaxed"><strong>Sistemi söndürməyin!</strong> Yalnız printer qapağını açın, rulonu bir az önə çəkərək qapağı bərk (klik səsi ilə) bağlayın. Sistemdə növbədə qalan bilet avtomatik olaraq çap olunacaq.</p></div>
+                        
+                        <div class="p-4 space-y-3">
+                            <!-- Özəllikləri -->
+                            <button onclick="toggleAccordion('t2s-specs')" class="w-full bg-slate-800/60 hover:bg-slate-800 p-2.5 rounded-lg text-left text-xs font-semibold flex justify-between items-center transition">
+                                <span class="text-blue-400"><i class="fa-solid fa-circle-info mr-1.5"></i> Sunmi T2s Özəllikləri & Təyinatı</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="t2s-specs" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <div class="py-2.5 space-y-2 leading-relaxed">
+                                    <p><strong>Təyinatı:</strong> Tirajlı lotereya satışı və poz-qazan biletlərinin validasiyası üçün nəzərdə tutulmuşdur.</p>
+                                    <p><strong>Üstünlüyü:</strong> Əsas üstünlüyü iki rəngli ekranının olmasıdır. İkinci ekran müştərilərə uduşları və reklam çarxlarını şəffaf nümayiş etdirir.</p>
+                                    <p><strong>İstifadə sahəsi:</strong> Böyük marketlər, kassa zonaları və daimi satış masaları üçün idealdır.</p>
+                                </div>
+                            </div>
 
-                        <button onclick="toggleAccordion('sunmi-paper-empty')" class="w-full bg-slate-800/50 hover:bg-slate-800 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center">
-                            <span>🧻 Ağ (boş) kağız çıxması</span> <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
-                        </button>
-                        <div id="sunmi-paper-empty" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3"><p class="py-2 leading-relaxed">Rulon tərs qoyulmuşdur. Termal rulonun parlaq (yazılı) təbəqəsi mütləq yuxarı, yəni satıcıya doğru baxmalıdır.</p></div>
+                            <div class="border-t border-slate-800 my-2 pt-2">
+                                <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-2">Texniki Problemlər və Həlli</p>
+                            </div>
+
+                            <!-- Problem 1 -->
+                            <button onclick="toggleAccordion('t2s-p1')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
+                                <span>🔌 1. Planşetin Cradle (Altlıq) əlaqəsi</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="t2s-p1" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <p class="py-2.5 leading-relaxed">
+                                    <strong>Həlli:</strong> Planşetin altlığa (Cradle) tam oturduğundan və fiziki <strong>"klik"</strong> səsinin gəldiyindən əmin olun. Bu səsin gəlməməsi USB skanerin və müştəri ekranının tamamilə işləməməsinə və tanınmamasına səbəb olacaq.
+                                </p>
+                            </div>
+
+                            <!-- Problem 2 -->
+                            <button onclick="toggleAccordion('t2s-p2')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
+                                <span>🔍 2. Witek skanerinin donması / oxumaması</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="t2s-p2" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <p class="py-2.5 leading-relaxed">
+                                    <strong>Həlli:</strong> Skaner şüşəsini səliqəli şəkildə silin. Əgər donma davam edərsə, kassa altlığının kənarında yerləşən alternativ fərqli USB portlarını yoxlayın. Çox vaxt fərqli USB porta keçmək cihazın dərhal tanınmasını bərpa edir.
+                                </p>
+                            </div>
+
+                            <!-- Problem 3 -->
+                            <button onclick="toggleAccordion('t2s-p3')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
+                                <span>🧻 3. Boş (yazısız) ağ kağız çıxması</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="t2s-p3" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <p class="py-2.5 leading-relaxed">
+                                    <strong>Həlli:</strong> Termal rulon printerə tərs qoyulmuşdur. Kağızın kimyəvi, parlaq (yazı yazılan) təbəqəsi mütləq yuxarı, yəni satıcıya doğru baxmalıdır. Rulonun istiqamətini çevirib yenidən qoyun.
+                                </p>
+                            </div>
+
+                            <!-- Problem 4 -->
+                            <button onclick="toggleAccordion('t2s-p4')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
+                                <span>🎟 4. Bilet çap olmadı, amma balans silindi</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="t2s-p4" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <p class="py-2.5 leading-relaxed">
+                                    <strong>Həlli:</strong> <strong>Sistemi və proqramı dərhal bağlamayın!</strong> Yalnız printer qapağını açın, rulonu bir az önə doğru çəkərək qapağı möhkəm şəkildə (klik səsi ilə) bağlayın. Sistem növəsində asılı qalan bilet avtomatik çap olunacaq.
+                                </p>
+                            </div>
+
+                            <!-- Problem 5 -->
+                            <button onclick="toggleAccordion('t2s-p5')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
+                                <span>🖥️ 5. Müştəri ekranının donması və ya sönməsi</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="t2s-p5" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <p class="py-2.5 leading-relaxed">
+                                    <strong>Həlli:</strong> Planşet və altlıq arasındakı qızıl təmas pinlərini yoxlayın. Cihazı söndürüb pinlərin üzərindeki tozu quru pambıqla silin, planşeti yenidən möhkəm sıxıb yandırın.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- 3. SUNMI V3 MIX -->
+                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="bg-gradient-to-r from-blue-900/30 to-slate-900 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
+                            <div>
+                                <h3 class="font-bold text-sm text-white">Sunmi V3 Mix</h3>
+                                <p class="text-[10px] text-slate-400">Portativ və Çevik Planşet Terminalı</p>
+                            </div>
+                            <i class="fa-solid fa-tablet-screen-button text-blue-400 text-lg"></i>
+                        </div>
+                        
+                        <div class="p-4 space-y-3">
+                            <!-- Özəllikləri -->
+                            <button onclick="toggleAccordion('v3mix-specs')" class="w-full bg-slate-800/60 hover:bg-slate-800 p-2.5 rounded-lg text-left text-xs font-semibold flex justify-between items-center transition">
+                                <span class="text-blue-400"><i class="fa-solid fa-circle-info mr-1.5"></i> Sunmi V3 Mix Özəllikləri & Təyinatı</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="v3mix-specs" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <div class="py-2.5 space-y-2 leading-relaxed">
+                                    <p><strong>Təyinatı:</strong> Sürətli tirajlı lotereya satışı və poz-qazan validasiyası üçün nəzərdə tutulmuş mobil-daşına bilən modeldir.</p>
+                                    <p><strong>Üstünlüyü:</strong> Terminalın əsas üstünlüyü planşet hissəsinin altlıqdan (cradle) asanlıqla çıxarılaraq əldə istifadə edilə bilməsidir.</p>
+                                    <p><strong>İstifadəsi:</strong> Müştərinin ayağına getmək, sıxlıq anında növbədən kənar sürətli validasiya etmək üçün idealdır.</p>
+                                </div>
+                            </div>
+
+                            <div class="border-t border-slate-800 my-2 pt-2">
+                                <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-2">Texniki Problemlər və Həlli</p>
+                            </div>
+
+                            <!-- Problem 1 -->
+                            <button onclick="toggleAccordion('v3mix-p1')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
+                                <span>📶 1. Cradle-dan çıxanda bağlantının qırılması</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="v3mix-p1" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <p class="py-2.5 leading-relaxed">
+                                    <strong>Həlli:</strong> Planşeti altlıqdan ayırdıqda daxili Wi-Fi şəbəkəsinin stabil olmasını yoxlayın. Wi-Fi dalğası zəifdirsə, planşet ayarlarından daxili mobil 4G (SIM kart) şəbəkəsini aktiv edin.
+                                </p>
+                            </div>
+
+                            <!-- Problem 2 -->
+                            <button onclick="toggleAccordion('v3mix-p2')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
+                                <span>📄 2. Çap zamanı ağ şaquli zolaqların düşməsi</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="v3mix-p2" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <p class="py-2.5 leading-relaxed">
+                                    <strong>Həlli:</strong> Bu, printer başlığının tozlanmasından xəbər verir. Qapağı açaraq gümüşü rəngli daxili termal metal başlığı və qara rezin çarxı (roliki) spirtli silgi bezlə səliqəli silib təmizləyin.
+                                </p>
+                            </div>
+
+                            <!-- Problem 3 -->
+                            <button onclick="toggleAccordion('v3mix-p3')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
+                                <span>🎟 3. Ödəniş edildi, amma bilet çap olunmadı</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="v3mix-p3" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <p class="py-2.5 leading-relaxed">
+                                    <strong>Həlli:</strong> Balans çıxılıb bilet çap edilmədikdə cihazı restart etməyin. Printer qapağını açın, rulonun daxildə düzgün yerləşdiyini yoxlayıb ucu bir az önə çəkin və qapağı klik səsi ilə bərk bağlayın.
+                                </p>
+                            </div>
+
+                            <!-- Problem 4 -->
+                            <button onclick="toggleAccordion('v3mix-p4')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
+                                <span>🧻 4. Printer qapağının tam kliklənməməsi</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="v3mix-p4" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <p class="py-2.5 leading-relaxed">
+                                    <strong>Həlli:</strong> Bəzən yeni qoyulan termal rulon standartdan bir qədər böyük olduqda qapağın tam oturmasına və dişi kilidlənməsinə mane olur. Rulonun üstündən bir qədər kağızı qopararaq azaldın və yenidən yoxlayın.
+                                </p>
+                            </div>
+
+                            <!-- Problem 5 -->
+                            <button onclick="toggleAccordion('v3mix-p5')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
+                                <span>🔄 5. Ekranın tamamilə donması</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="v3mix-p5" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <p class="py-2.5 leading-relaxed">
+                                    <strong>Həlli:</strong> Proqram və ya Android əməliyyat sistemi daxili önbəllik sıxlığı səbəbindən tam donduqda, cihazın üstündəki Power düyməsini ən azı 10 saniyə ərzində basılı saxlayaraq "Force Restart" edin.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. ZEBRA TERMİNALI -->
+                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="bg-gradient-to-r from-blue-900/30 to-slate-900 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
+                            <div>
+                                <h3 class="font-bold text-sm text-white">Zebra Mobil Printeri</h3>
+                                <p class="text-[10px] text-slate-400">Portativ Validasiya və Çap Cihazı</p>
+                            </div>
+                            <i class="fa-solid fa-print text-blue-400 text-lg"></i>
+                        </div>
+                        
+                        <div class="p-4 space-y-3">
+                            <!-- Özəllikləri -->
+                            <button onclick="toggleAccordion('zebra-specs')" class="w-full bg-slate-800/60 hover:bg-slate-800 p-2.5 rounded-lg text-left text-xs font-semibold flex justify-between items-center transition">
+                                <span class="text-blue-400"><i class="fa-solid fa-circle-info mr-1.5"></i> Zebra Özəllikləri & Təyinatı</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="zebra-specs" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <div class="py-2.5 space-y-2 leading-relaxed">
+                                    <p><strong>Təyinatı:</strong> Zebra əsasən poz-qazan biletlərinin sistemdə yoxlanılması (validasiyası) üçün nəzərdə tutulmuş portativ çap və validasiya aparatıdır.</p>
+                                    <p><strong>İmkanları:</strong> Bununla yanaşı, bəzi spesifik kiçik satış nöqtələrində tirajlı lotereya satışı və kupon çapını da stabil şəkildə həyata keçirə bilir.</p>
+                                    <p><strong>Texnologiya:</strong> Bluetooth bağlantısı vasitəsilə mobil planşetlərə asanlıqla bağlanır və simsiz işləyir.</p>
+                                </div>
+                            </div>
+
+                            <div class="border-t border-slate-800 my-2 pt-2">
+                                <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-2">Texniki Problemlər və Həlli</p>
+                            </div>
+
+                            <!-- Problem 1 -->
+                            <button onclick="toggleAccordion('zebra-p1')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
+                                <span>📄 1. Printer daxili test çapı (Setting Print)</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="zebra-p1" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <p class="py-2.5 leading-relaxed">
+                                    <strong>Həlli:</strong> Aparatın fiziki vəziyyətini yoxlamaq üçün planşeti söndürün. Printerin daxili ayarlarına daxil olun, 3-cü düyməni basaraq **Setting Print** rejimini seçib daxili test vərəqi çap edin. Vərəq çıxırsa, printer sazdır, problem qoşulmadadır.
+                                </p>
+                            </div>
+
+                            <!-- Problem 2 -->
+                            <button onclick="toggleAccordion('zebra-p2')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
+                                <span>📶 2. Bluetooth bağlantısının dərhal bərpası</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="zebra-p2" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <p class="py-2.5 leading-relaxed">
+                                    <strong>Həlli:</strong> Hər iki cihazı söndürün. 5 dəqiqə gözlədikdən sonra **öncə terminalı (planşeti), daha sonra isə Zebra printeri** yandırın. İstənilən tirajlı oyun bölməsinə keçib printerin ekranında bluetooth işarəsinin gəlməsini yoxlayın.
+                                </p>
+                            </div>
+
+                            <!-- Problem 3 -->
+                            <button onclick="toggleAccordion('zebra-p3')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
+                                <span>📶 3. Kənar bluetooth cihazların mane olması</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="zebra-p3" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <p class="py-2.5 leading-relaxed">
+                                    <strong>Həlli:</strong> Satıcının daxili smartfonu, bluetooth qulaqlığı və ya smart saatının printeri kənardan bloklayıb-bloklamadığını yoxlayın. Yaxınlıqdakı kənar bluetooth şəbəkələrini söndürdükdə printer dərhal planşetə qoşulacaq.
+                                </p>
+                            </div>
+
+                            <!-- Problem 4 -->
+                            <button onclick="toggleAccordion('zebra-p4')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
+                                <span>✍️ 4. Çapın solğun və oxunmaz çıxması</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="zebra-p4" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <p class="py-2.5 leading-relaxed">
+                                    <strong>Həlli:</strong> Printerin daxili gümüşü metal rəngli termal başlığını və rulonun üstündən keçdiyi qara rolik çarxını spirtli pambıq bezlə səliqəli şəkildə silin. Bu, kağızın doğru qızmasını bərpa edərək yazıları aydınlaşdırır.
+                                </p>
+                            </div>
+
+                            <!-- Problem 5 -->
+                            <button onclick="toggleAccordion('zebra-p5')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
+                                <span>🔋 5. Ekrandakı batareya işarəsinin qırmızı yanıb-sönməsi</span> 
+                                <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                            </button>
+                            <div id="zebra-p5" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
+                                <p class="py-2.5 leading-relaxed">
+                                    <strong>Həlli:</strong> Bu, enerjinin kritik səviyyədə az olmasından və ya şarj kabelində qısaqapanmadan xəbər verir. Şarj adapterini yoxlayın, fərqli şəbəkə rozetkası sınayın və cihazı tam dolana kimi cərəyanda saxlayın.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
+        <!-- TAB 4: PARTNYOR STANDARTI -->
         <section id="partner-standards" class="tab-content space-y-6">
             <div class="border-b border-slate-800 pb-2">
                 <h2 class="text-lg font-bold">🤝 Rəsmi Partnyor Standartları</h2>
@@ -416,6 +726,7 @@
             </div>
         </section>
 
+        <!-- TAB 5: SATIŞ TEXNİKALARI -->
         <section id="sales-techniques" class="tab-content space-y-6">
             <div class="border-b border-slate-800 pb-2">
                 <h2 class="text-lg font-bold">🎯 Satış Texnikaları və Müştəri Psixologiyası</h2>
