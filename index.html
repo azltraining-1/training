@@ -233,86 +233,623 @@
                 </div>
             </div>
 
-            <div id="product-subtab-pozqazan" class="space-y-4 hidden">
+            <!-- SUB-TAB: POZ-QAZAN OYUNLARI -->
+            <div id="product-subtab-pozqazan" class="space-y-4 hidden animate-fadeIn">
                 <!-- Biznes Qaydası Xəbərdarlığı -->
                 <div class="p-3 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-lg text-xs flex items-start space-x-2 shadow-md">
                     <i class="fa-solid fa-circle-info mt-0.5 animate-pulse"></i>
                     <span><strong>Mühüm Playbook Qaydası:</strong> Poz-Qazan biletləri vitrində müştərilərə qiymət kateqoriyasına uyğun olaraq 1 AZN-dən 10 AZN-ə doğru artan ardıcıllıqla təqdim edilməlidir!</span>
                 </div>
 
-                <!-- 1 AZN: QIZIL -->
-                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden">
-                    <div class="bg-slate-800/60 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
-                        <div class="flex items-center space-x-2">
-                            <span class="w-6 h-6 rounded bg-amber-500 text-slate-950 font-black flex items-center justify-center text-[10px]">1₼</span>
-                            <h4 class="font-bold text-sm text-amber-400">Qızıl (Baza Məhsul)</h4>
-                        </div>
-                        <span class="text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded font-semibold">Ani Lotereya</span>
-                    </div>
-                    <div class="p-4 flex flex-col md:flex-row gap-4 items-center">
-                        <div class="w-24 h-36 bg-gradient-to-br from-yellow-700 via-yellow-400 to-yellow-800 rounded-lg shadow-lg flex flex-col justify-between p-2 shrink-0 border border-yellow-200">
-                            <span class="text-[7px] text-yellow-950 font-black uppercase text-center block">QIZIL</span>
-                            <div class="my-auto flex flex-col items-center">
-                                <i class="fa-solid fa-cubes text-yellow-100 text-xl"></i>
-                                <span class="text-[8px] font-bold text-yellow-100 mt-1">25 000₼</span>
-                            </div>
-                            <span class="text-[9px] text-yellow-900 bg-yellow-100 font-black rounded-sm py-0.5 text-center uppercase block">1 AZN</span>
-                        </div>
-                        <div class="flex-1 space-y-2.5 text-xs w-full">
-                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Necə oynanılır:</strong> "MÜKAFAT" və "OYUN" sahələrindəki gizli qat pozulur, eyni rəqəmlər və ya simvollar uyğun gəldikdə uduş qazanılır.</p></div>
-                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Uduş şansı:</strong> 5-də 1-dir (1:4.81) / <strong class="text-slate-300">Maksimum uduş:</strong> 25,000 AZN</p></div>
-                        </div>
+                <!-- Poz-Qazan Qiymət Süzgəci (Filtr Menyusu) -->
+                <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-800 flex flex-col space-y-2">
+                    <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-filter mr-1 text-red-500"></i> Sürətli vitrin süzgəci:</span>
+                    <div class="flex flex-wrap gap-1.5 overflow-x-auto custom-scrollbar pb-1">
+                        <button onclick="filterPozQazan('all')" id="btn-pq-all" class="px-3 py-1.5 rounded-lg text-[11px] font-black bg-red-600 text-white transition whitespace-nowrap">Hamısı (23 oyun)</button>
+                        <button onclick="filterPozQazan('1')" id="btn-pq-1" class="px-3 py-1.5 rounded-lg text-[11px] font-black bg-[#131c32] text-slate-300 border border-slate-800 transition">1 AZN</button>
+                        <button onclick="filterPozQazan('2')" id="btn-pq-2" class="px-3 py-1.5 rounded-lg text-[11px] font-black bg-[#131c32] text-slate-300 border border-slate-800 transition">2 AZN</button>
+                        <button onclick="filterPozQazan('3')" id="btn-pq-3" class="px-3 py-1.5 rounded-lg text-[11px] font-black bg-[#131c32] text-slate-300 border border-slate-800 transition">3 AZN</button>
+                        <button onclick="filterPozQazan('5')" id="btn-pq-5" class="px-3 py-1.5 rounded-lg text-[11px] font-black bg-[#131c32] text-slate-300 border border-slate-800 transition">5 AZN</button>
+                        <button onclick="filterPozQazan('10')" id="btn-pq-10" class="px-3 py-1.5 rounded-lg text-[11px] font-black bg-[#131c32] text-slate-300 border border-slate-800 transition">10 AZN</button>
                     </div>
                 </div>
 
-                <!-- 2 AZN: UĞURLU 7 -->
-                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden">
-                    <div class="bg-slate-800/60 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
-                        <div class="flex items-center space-x-2">
-                            <span class="w-6 h-6 rounded bg-red-600 text-white font-black flex items-center justify-center text-[10px]">2₼</span>
-                            <h4 class="font-bold text-sm text-red-400">Uğurlu 7 (Baza Məhsul)</h4>
-                        </div>
-                        <span class="text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded font-semibold">Ani Lotereya</span>
-                    </div>
-                    <div class="p-4 flex flex-col md:flex-row gap-4 items-center">
-                        <div class="w-24 h-36 bg-gradient-to-br from-red-700 via-rose-500 to-red-950 rounded-lg shadow-lg flex flex-col justify-between p-2 shrink-0 border border-red-400">
-                            <span class="text-[7px] text-white font-black uppercase text-center block">UĞURLU 7</span>
-                            <div class="my-auto flex flex-col items-center">
-                                <span class="text-3xl font-black text-white leading-none">7</span>
-                                <span class="text-[7px] text-yellow-300 font-bold mt-1">3-də 1 şans</span>
-                            </div>
-                            <span class="text-[9px] text-red-950 bg-red-200 font-black rounded-sm py-0.5 text-center uppercase block">2 AZN</span>
-                        </div>
-                        <div class="flex-1 space-y-2.5 text-xs w-full">
-                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Necə oynanılır:</strong> "UĞURLU RƏQƏMLƏR" sahəsindəki rəqəm "SİZİN RƏQƏMLƏR" ilə eynidirsə, altındakı uduş qazanılır. "7" simvolu uduşu ikiqat artırır.</p></div>
-                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Uduş şansı (Ən Yüksək):</strong> 3-də 1-dir (1:3.43) / <strong class="text-slate-300">Maksimum uduş:</strong> 50,000 AZN</p></div>
-                        </div>
-                    </div>
-                </div>
+                <!-- 23 ADƏT POZ-QAZAN MEHSULLARI GRİDİ -->
+                <div class="space-y-3" id="pozqazan-cards-container">
 
-                <!-- 10 AZN: PRESTİJ -->
-                <div class="bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden">
-                    <div class="bg-slate-800/60 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
-                        <div class="flex items-center space-x-2">
-                            <span class="w-6 h-6 rounded bg-purple-600 text-white font-black flex items-center justify-center text-[10px]">10₼</span>
-                            <h4 class="font-bold text-sm text-amber-500 tracking-wide font-serif">PRESTİJ (VIP Məhsul)</h4>
-                        </div>
-                        <span class="text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded font-semibold">Premium Ani</span>
-                    </div>
-                    <div class="p-4 flex flex-col md:flex-row gap-4 items-center">
-                        <div class="w-24 h-36 bg-gradient-to-br from-slate-800 via-amber-600 to-slate-950 rounded-lg shadow-lg flex flex-col justify-between p-2 shrink-0 border border-amber-400">
-                            <span class="text-[7px] text-amber-300 font-serif font-black uppercase text-center block">PRESTİJ</span>
-                            <div class="my-auto flex flex-col items-center">
-                                <i class="fa-solid fa-gem text-amber-300 text-2xl"></i>
-                                <span class="text-[8px] font-bold text-white mt-1">500 000₼</span>
+                    <!-- =================== 1 AZN KATEQORİYASI =================== -->
+
+                    <!-- 1. QIZIL -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="1">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-yellow-500 text-slate-950 font-black text-[10px]">1₼</span>
+                                <h4 class="font-bold text-xs text-yellow-500">Qızıl (Baza Məhsul)</h4>
                             </div>
-                            <span class="text-[9px] text-amber-950 bg-amber-200 font-black rounded-sm py-0.5 text-center uppercase block">10 AZN</span>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 25 000₼</span>
                         </div>
-                        <div class="flex-1 space-y-2.5 text-xs w-full">
-                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Necə oynanılır:</strong> Ən yüksek qiymətli VIP bilet növü. Geniş oyun zonası və uduşu qatlayan "Brilyant" simvolları var.</p></div>
-                            <div class="flex items-start"><span class="text-emerald-500 font-bold mr-2">✅</span><p><strong class="text-slate-300">Uduş şansı:</strong> 1:3.15 / <strong class="text-slate-300">Maksimum uduş:</strong> Möhtəşəm 500,000 AZN!</p></div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Ənənəvi və klassik Poz-Qazan oyunudur. Şanslı simvollar üzərində qurulmuşdur.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. "MÜKAFAT" və "OYUN" sahələrindəki gizli qoruyucu qatı pozun.</p>
+                                    <p>2. Bu xanalardakı simvollar və ya rəqəmlər uyğun gəldikdə bilet uduşlu sayılır.</p>
+                                    <p>3. Uyğun gələn sahənin altında göstərilmiş məbləği dərhal qazanın.</p>
+                                </div>
+                            </details>
                         </div>
                     </div>
+
+                    <!-- 2. YIĞ, APAR! -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="1">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-yellow-500 text-slate-950 font-black text-[10px]">1₼</span>
+                                <h4 class="font-bold text-xs text-slate-200">Yığ, Apar!</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 5 000₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Sürətli simvol uyğunlaşdırma oyunu. Toplam 12 milyon manatdan çox fərqli uduş fondu var.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. Oyun lövhəsində "UDUŞLU SİMVOL" və "SİMVOLLARINIZ" xanalarını pozun.</p>
+                                    <p>2. "UDUŞLU SİMVOL" ilə "SİMVOLLARINIZ"dan hər hansı biri uyğun gəldikdə bilet uduşlu sayılır.</p>
+                                    <p>3. Uyğun gələn simvolun dərhal altındakı məbləği qazanın.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- 3. 4 FƏSİL -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="1">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-yellow-500 text-slate-950 font-black text-[10px]">1₼</span>
+                                <h4 class="font-bold text-xs text-slate-200">4 Fəsil</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 5 000₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Bir uduşlu dərəcə və dörd fərqli mövsüm (oyun xanası) üzərində qurulmuş ani lotereyadır.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. Bilet üzərindəki "UDUŞLU DƏRƏCƏ" və "OYUN" xanalarını pozun.</p>
+                                    <p>2. "UDUŞLU DƏRƏCƏ" ilə hər hansı "OYUN" xanasındakı dərəcə eyni olduqda müvafiq uduşu qazanın.</p>
+                                    <p>3. Əgər pozulmuş xanada "2X" simvolunu tapsanız, uduşun 2 qatını qazanırsınız.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- 4. ANİ 50 -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="1">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-yellow-500 text-slate-950 font-black text-[10px]">1₼</span>
+                                <h4 class="font-bold text-xs text-slate-200">Ani 50</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 1 000₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Kiçik və orta uduşların qazanılma şansı yüksək olan bəsit strukturlu saniyəlik oyundur.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. Bilet üzərindəki qoruyucu qatı sürətlə pozun.</p>
+                                    <p>2. "ŞANSLI RƏQƏM" ilə sizin rəqəmlər üst-üstə düşərsə, altındakı uduşu qazanın.</p>
+                                    <p>3. 3 eyni simvol tapıldıqda isə bilet anında uduşlu hesab olunur.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- =================== 2 AZN KATEQORİYASI =================== -->
+
+                    <!-- 5. UĞURLU 7 -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="2">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-rose-600 text-white font-black text-[10px]">2₼</span>
+                                <h4 class="font-bold text-xs text-rose-400">Uğurlu 7 (Baza Məhsul)</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 50 000₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Çox sevilən və ən çox satılan baza oyundur. 7 oyun sırasından və çarpan simvollarından ibarətdir.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. Oyun sıralarında "7" və "UDUŞ" xanalarını pozun.</p>
+                                    <p>2. "7" simvolunu tapdıqda onun qarşısındakı müvafiq məbləği qazanın.</p>
+                                    <p>3. "MANAT" simvolunu tapsanız, bilet üzərindəki bütün məbləğləri qazanırsınız.</p>
+                                    <p>4. 2X, 5X və ya 10X çarpan simvollarını tapsanız, uduşu müvafiq olaraq qatlayın.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- 6. ŞANS ULDUZU -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="2">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-rose-600 text-white font-black text-[10px]">2₼</span>
+                                <h4 class="font-bold text-xs text-slate-200">Şans Ulduzu</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 10 000₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Göy və ulduz mövzulu, olduqca sadə və anlaşılan saniyəlik uduş biletidir.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. Bilet üzərindəki "ŞANSLI RƏQƏMLƏR" və "SİZİN RƏQƏMLƏRİNİZ" xanalarını pozun.</p>
+                                    <p>2. "SİZİN RƏQƏMLƏRİNİZ" xanasındakı hər hansı rəqəm Şanslı Rəqəmlərlə uyğun gəlsə, altındakı məbləği qazanın.</p>
+                                    <p>3. "ULDUZ" simvolu aşkarlandıqda isə dərhal həmin simvolun altındakı uduş sizin olur.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- 7. QOŞA -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="2">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-rose-600 text-white font-black text-[10px]">2₼</span>
+                                <h4 class="font-bold text-xs text-slate-200">Qoşa</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 4 000₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Hər bir oyunda simvolların cütləşməsinə əsaslanan komplimentar Poz-Qazan növüdür.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. Bilet üzərindəki fərqli oyun sıralarında yerləşən qoruyucu qatları pozun.</p>
+                                    <p>2. Eyni oyun sırasında yerləşən iki ədəd qoşa (eyni) simvolu və ya rəqəmi tapın.</p>
+                                    <p>3. Qoşa simvollar tapıldıqda, həmin sıranın qarşısındakı müvafiq uduş məbləğini əldə edin.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- 8. TAP, QAZAN -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="2">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-rose-600 text-white font-black text-[10px]">2₼</span>
+                                <h4 class="font-bold text-xs text-slate-200">Tap, Qazan</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 25 000₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Sürətli rəqəm qarşılaşdırmasına əsaslanan, böyük uduş şansı yüksək olan maraqlı lotereyadır.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. Bilet üzərindəki "ŞANSLI RƏQƏMLƏR" və "SİZİN RƏQƏMLƏRİNİZ" sahələrini pozun.</p>
+                                    <p>2. "SİZİN RƏQƏMLƏRİNİZ" arasından "ŞANSLI RƏQƏMLƏR" ilə eyni olan rəqəmləri müəyyən edin.</p>
+                                    <p>3. Üst-üstə düşən rəqəmin dərhal altındakı uduş məbləğini qazanın.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- =================== 3 AZN KATEQORİYASI =================== -->
+
+                    <!-- 9. ÇEMPİON -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="3">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-blue-600 text-white font-black text-[10px]">3₼</span>
+                                <h4 class="font-bold text-xs text-blue-400">Çempion</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 25 000₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Yarış və idman ruhlu Poz-Qazan növüdür. 8 oyun sırasından və xüsusi çarpan sahəsindən ibarətdir.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. Biletin üzərindəki 8 "OYUN" sırasını və "ÇARPAN" xanalarını pozun.</p>
+                                    <p>2. Hər hansı "OYUN" sırasında yerləşən "Sənin nəticən" "Rəqibin nəticəsi"ndən böyük olmalıdır.</p>
+                                    <p>3. Bu halda həmin sıranın dərhal qarşısındakı uduş məbləğini qazanırsınız.</p>
+                                    <p>4. Çarpan xanasındakı "2X", "5X" və ya "10X" simvollarından birini tapıb uduşunuzu müvafiq olaraq artırın.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- 10. XƏZƏRDƏ XƏZİNƏ -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="3">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-blue-600 text-white font-black text-[10px]">3₼</span>
+                                <h4 class="font-bold text-xs text-slate-200">Xəzərdə Xəzinə</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 3 000₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Xüsusi dəniz və macəra mövzulu, 3 fərqli müstəqil oyun lövhəsindən ibarət bilet növüdür.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. Biletin üzərindəki 3 fərqli "OYUN" lövhəsini pozun.</p>
+                                    <p>2. OYUN 1: "XƏRİTƏ" simvolunu tapın və müvafiq uduşu qazanın.</p>
+                                    <p>3. OYUN 2: "SANDIQ" simvolunu tapın və müvafiq uduşu qazanın.</p>
+                                    <p>4. OYUN 3: Üç eyni məbləği tapın və həmin uduşu dərhal əldə edin.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- 11. UDUŞ XONÇASI -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="3">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-blue-600 text-white font-black text-[10px]">3₼</span>
+                                <h4 class="font-bold text-xs text-slate-200">Uduş Xonçası</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 25 000₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Limitli sayda buraxılmış, milli Novruz bayramı mövzulu, bir ƏSAS və bir BONUS oyun xanasından ibarət bilet növüdür.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. Biletin üzərindəki "BONUS" və "ƏSAS OYUN" lövhələrini pozun.</p>
+                                    <p>2. ƏSAS OYUNda "UDUŞLU SİMVOLLAR"dan hər hansı biri ətrafdakı xanalarla uyğunlaşsın.</p>
+                                    <p>3. BONUS OYUNU xanasında milli simvolumuz olan "SƏMƏNİ"ni tapsanız, altındakı məbləği qazanırsınız.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- 12. BƏXT AÇARI -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="3">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-blue-600 text-white font-black text-[10px]">3₼</span>
+                                <h4 class="font-bold text-xs text-slate-200">Bəxt Açarı</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 10 000₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Şans açarları üzərində dizayn edilmiş, qazanılması olduqca bəsit və sürətli olan ani lotereyadır.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. Biletin üzərindəki qoruyucu üstüörtülü sahələri pozun.</p>
+                                    <p>2. "AÇAR" simvolunu tapın.</p>
+                                    <p>3. "Açar" simvolunu tapan kimi, onun dərhal altında yazılmış uduş məbləğini qazanın.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- =================== 5 AZN KATEQORİYASI =================== -->
+
+                    <!-- 13. MEQA 7 -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="5">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-purple-600 text-white font-black text-[10px]">5₼</span>
+                                <h4 class="font-bold text-xs text-purple-400">Meqa 7</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 100 000₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Royal "7" simvoluna söykənən premium bilet növüdür. 3 fərqli müstəqil oyun lövhəsinə sahibdir.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. Biletin üzərindəki 3 OYUN lövhəsini pozun.</p>
+                                    <p>2. OYUN 1: "7" simvolunu tapıb altındakı uduşu dərhal qazanın.</p>
+                                    <p>3. OYUN 2: Hər hansı bir sırada iki ədəd "7" tapıb qarşısındakı uduşu qazanın.</p>
+                                    <p>4. OYUN 3: Bir sırada "SƏNİN ÇƏKİN" "RƏQİBİN ÇƏKİSİ"ndən çox olsun, uduşu əldə edin.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- 14. XƏMSƏ -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="5">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-purple-600 text-white font-black text-[10px]">5₼</span>
+                                <h4 class="font-bold text-xs text-slate-200">Xəmsə</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 5 555₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Adından məlum olduğu kimi "5"-in sehri və ehtimalına əsaslanan 5 fərqli oyun xanalı bilet növüdür.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. Biletin üzərindəki 5 OYUN lövhəsini pozun.</p>
+                                    <p>2. OYUN 1: "5" rəqəmini tapıb müvafiq uduşu dərhal qazanın.</p>
+                                    <p>3. OYUN 2: Həmin lövhədə cəmi "5" edən istənilən iki fərqli rəqəmi tapın.</p>
+                                    <p>4. Digər oyun sıralarında isə şanslı simvolları taparaq anında uduşlar əldə edin.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- 15. GÖZ MUNCUĞU -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="5">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-purple-600 text-white font-black text-[10px]">5₼</span>
+                                <h4 class="font-bold text-xs text-slate-200">Göz Muncuğu</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 100 000₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Geniş bonus və çarpan sahəsi, 6 oyun sırası olan və şansa inananlar üçün sevilən bir bilet növüdür.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. "UDUŞLU RƏQƏM" xanasını, 6 oyun sırasını və "BONUS OYUNU" xanasını pozun.</p>
+                                    <p>2. Sıralardakı hər hansı rəqəm "UDUŞLU RƏQƏM" ilə eynidirsə, altındakı məbləği qazanın.</p>
+                                    <p>3. Sıralarda "GÖZ MUNCUĞU" simvolunu tapsanız, anında stabil 50 AZN qazanırsınız.</p>
+                                    <p>4. BONUS xanasını pozaraq, qazandığınız uduşları 2, 5 və ya 10 qat dərhal artırın.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- 16. 5X -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="5">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-purple-600 text-white font-black text-[10px]">5₼</span>
+                                <h4 class="font-bold text-xs text-slate-200">5X</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 100 000₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Multiplikator (çarpan) üzərində qurulmuş, sürətli və yüksək uduş tezliyinə malik oyundur.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. Bilet üzərindəki qoruyucu səthləri təmizləyin.</p>
+                                    <p>2. "UDUŞLU RƏQƏMLƏR" ilə "RƏQƏMLƏRİNİZ"i uyğunlaşdırıb altındakı məbləği əldə edin.</p>
+                                    <p>3. "5X" simvolunu tapdıqda isə, həmin xananın altındakı uduş məbləğini tam 5 qat qazanırsınız.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- 17. ZÜMRÜD -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="5">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-purple-600 text-white font-black text-[10px]">5₼</span>
+                                <h4 class="font-bold text-xs text-slate-200">Zümrüd</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 100 000₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Parıldayan qiymətli daşlar mövzulu, olduqca estetik və cəlbedici bir bilet növüdür.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. "UDUŞLU RƏQƏMLƏR" və "SİZİN RƏQƏMLƏRİNİZ" sahələrini səliqə ilə pozun.</p>
+                                    <p>2. Eyni olan rəqəmləri tapın və altındakı uduş məbləğini dərhal əldə edin.</p>
+                                    <p>3. Əgər bilet üzərində "ZÜMRÜD" simvolunu tapsanız, altındakı uduşu dərhal qazanırsınız.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- 18. SÜR-QAZAN -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="5">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-purple-600 text-white font-black text-[10px]">5₼</span>
+                                <h4 class="font-bold text-xs text-slate-200">Sür-Qazan</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 10 000₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Sürət, avtomobil və adrenalin mövzusunda buraxılmış, asan mənimsənilən gedişatlı oyundur.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. Bilet üzərindəki qoruyucu örtüyü pozun.</p>
+                                    <p>2. "ŞANSLI SİMVOLLAR" ilə sizin simvollarınızı qarşılaşdırın.</p>
+                                    <p>3. Uyğun gələn simvolların altındakı uduşları bir-birinə cəmləyərək dərhal qazanın.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- 19. XOŞBƏXT -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="5">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-purple-600 text-white font-black text-[10px]">5₼</span>
+                                <h4 class="font-bold text-xs text-slate-200">Xoşbəxt</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 50 000₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> İnsanlara xoşbəxtlik gətirən şans və bəxt elementləri üzərində dizayn edilmiş lotereyadır.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. Bilet üzərindəki "ŞANSLI RƏQƏMLƏR" və "SİZİN RƏQƏMLƏRİNİZ" xanalarını pozun.</p>
+                                    <p>2. Rəqəmləriniz Şanslı Rəqəmlərlə eynilik təşkil etdikdə, onun altındakı məbləği qazanın.</p>
+                                    <p>3. Uduşlar bilet daxilində cəmlənərək müştəriyə ödənilir.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- =================== 10 AZN KATEQORİYASI =================== -->
+
+                    <!-- 20. PRESTİJ -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="10">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-amber-500 text-slate-950 font-black text-[10px]">10₼</span>
+                                <h4 class="font-bold text-xs text-amber-500 tracking-wide font-serif">PRESTİJ (VIP Məhsul)</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 500 000₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Ən yüksək qiymətli və böyük uduşlu VIP bilet növüdür. Geniş 4 müstəqil oyun lövhəsinə sahibdir.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. OYUN 1, OYUN 2 və OYUN 3 sahələrini pozun. Eyni sıralarda iki eyni simvol tapıb müvafiq uduşu qazanın.</p>
+                                    <p>2. OYUN 4 lövhəsində "PUL" simvolunu tapın, altındakı uduş dərhal sizin olsun.</p>
+                                    <p>3. "BRİLYANT" simvolu aşkarlandıqda isə, həmin uduş məbləği tam ikiqat artır.</p>
+                                    <p>4. Bilet bir neçə oyun lövhəsi üzrə uduşlu olarsa, uduşlar tam cəmlənir.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- 21. 10X -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="10">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-amber-500 text-slate-950 font-black text-[10px]">10₼</span>
+                                <h4 class="font-bold text-xs text-slate-200">10X</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 200 000₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Böyük uduşu və uduş çarpanları olduqca yüksək olan, sürətli oynanılan premium bilet növüdür.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. Bilet üzərindəki qoruyucu qatı təmizləyin.</p>
+                                    <p>2. "UDUŞLU RƏQƏMLƏR" ilə "RƏQƏMLƏRİNİZ"i eyniləşdirin və qarşısındakı məbləği qazanın.</p>
+                                    <p>3. "10X" simvolu tapan kimi, həmin xananın dərhal altındakı məbləği tam 10 qat qazanırsınız.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- 22. ŞANS YAĞIŞI -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="10">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-amber-500 text-slate-950 font-black text-[10px]">10₼</span>
+                                <h4 class="font-bold text-xs text-slate-200">Şans Yağışı</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 200 000₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Multi-bonus xanaları olan, müştərilər tərəfindən çox sevilən və uduş payı olduqca zəngin olan lotereyadır.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. "UDUŞLU RƏQƏMLƏR" və "RƏQƏMLƏRİNİZ" sahələrini pozun. Rəqəmlər üst-üstə düşərsə, altındakı uduşu qazanın.</p>
+                                    <p>2. "10X" simvolunu tapdıqda, həmin sıranın uduşunu tam 10 dəfə artıraraq qazanın.</p>
+                                    <p>3. "PUL DƏSTƏSİ" simvolu tapdıqda isə, heç bir şərt olmadan anında stabil 50 AZN qazanırsınız.</p>
+                                    <p>4. Biletin kənarındakı "BONUS" xanalarında müvafiq olaraq 100, 200 və 500 manat bonus qazanmaq şansınız var.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- 23. MİLYONÇU -->
+                    <div class="pq-card bg-[#131c32] rounded-xl border border-slate-800 overflow-hidden" data-price="10">
+                        <div class="bg-slate-800/40 px-4 py-2.5 border-b border-slate-800/80 flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded bg-amber-500 text-slate-950 font-black text-[10px]">10₼</span>
+                                <h4 class="font-bold text-xs text-amber-500 font-serif">Milyonçu</h4>
+                            </div>
+                            <span class="text-[10px] text-slate-400 font-semibold">Max: 1 000 000₼</span>
+                        </div>
+                        <div class="p-3.5 space-y-2">
+                            <p class="text-xs text-slate-300 leading-relaxed"><strong class="text-slate-400">Oyun Haqqında:</strong> Azərlotereyanın təqdim etdiyi rekord sayda böyük uduşlu, geniş oyun zonası olan ən prestijli və lüks biletidir.</p>
+                            <details class="group border-t border-slate-800/80 pt-2">
+                                <summary class="flex justify-between items-center cursor-pointer text-[11px] font-bold text-red-400 select-none list-none">
+                                    <span>🎮 Necə oynanılır?</span>
+                                    <i class="fa-solid fa-chevron-down text-[9px] text-slate-400 transition-transform group-open:rotate-180"></i>
+                                </summary>
+                                <div class="mt-2 text-[11px] text-slate-300 leading-relaxed pl-2 border-l-2 border-red-500/50 space-y-1">
+                                    <p>1. Biletin üzərindəki 5 fərqli oyun zonasını səliqə ilə pozun.</p>
+                                    <p>2. "UDUŞLU RƏQƏMLƏR" ilə sizin rəqəmlər üst-üstə düşərsə, müvafiq uduş məbləğini qazanın.</p>
+                                    <p>3. "BRİLYANT", "QIZIL KÜLÇƏ" və ya "PUL KİSƏSİ" simvollarını tapan kimi, altındakı böyük uduşları dərhal əldə edin.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -527,7 +1064,7 @@
                             <div id="v3mix-specs" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
                                 <div class="py-2.5 space-y-2 leading-relaxed">
                                     <p><strong>Təyinatı:</strong> Sürətli tirajlı lotereya satışı və poz-qazan validasiyası üçün nəzərdə tutulmuş mobil-daşına bilən modeldir.</p>
-                                    <p><strong>Üstünlüyü:</strong> Terminalın əsas üstünlüyü planşet hissəsinin altlıqdan (cradle) asanlıqla çıxarılaraq əldə istifadə edilə bilməsidir.</p>
+                                    <p><strong>Üstünlüyü:</strong> Terminalın əsas üstünlüyü planşet hissəsininin altlıqdan (cradle) asanlıqla çıxarılaraq əldə istifadə edilə bilməsidir.</p>
                                     <p><strong>İstifadəsi:</strong> Müştərinin ayağına getmək, sıxlıq anında növbədən kənar sürətli validasiya etmək üçün idealdır.</p>
                                 </div>
                             </div>
@@ -548,7 +1085,7 @@
                             </div>
 
                             <!-- Problem 2 -->
-                            <button onclick="toggleAccordion('v3mix-p2')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
+                            <button onclick="toggleAccordion('v3mix-p2')" class="w-full bg-[#131c32] hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
                                 <span>📄 2. Çap zamanı ağ şaquli zolaqların düşməsi</span> 
                                 <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
                             </button>
@@ -658,7 +1195,7 @@
 
                             <!-- Problem 4 -->
                             <button onclick="toggleAccordion('zebra-p4')" class="w-full bg-slate-800/30 hover:bg-slate-800/50 p-2.5 rounded-lg text-left text-xs font-medium flex justify-between items-center transition">
-                                <span>✍️ 4. Çapın solğun və oxunmaz çıxması</span> 
+                                <span>🖨️ 4. Çapın solğun və oxunmaz çıxması</span> 
                                 <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
                             </button>
                             <div id="zebra-p4" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
@@ -674,7 +1211,7 @@
                             </button>
                             <div id="zebra-p5" class="accordion-content bg-slate-950/40 rounded-lg text-xs text-slate-300 p-0 px-3">
                                 <p class="py-2.5 leading-relaxed">
-                                    <strong>Həlli:</strong> Bu, enerjinin kritik səviyyədə az olmasından və ya şarj kabelində qısaqapanmadan xəbər verir. Şarj adapterini yoxlayın, fərqli şəbəkə rozetkası sınayın və cihazı tam dolana kimi cərəyanda saxlayın.
+                                    <strong>Həlli:</strong> This applies the battery charge issue. Şarj adapterini yoxlayın, fərqli şəbəkə rozetkası sınayın və cihazı tam dolana kimi cərəyanda saxlayın.
                                 </p>
                             </div>
                         </div>
@@ -761,7 +1298,7 @@
                     <span class="text-[10px] uppercase font-bold text-amber-400 tracking-wider">The Strategist (Strateq)</span>
                     <h4 class="font-bold text-sm mt-1 text-white">Riyazi şansları, paket nömrələrini və uduş faizini hesablamağa çalışır</h4>
                     <p class="text-xs text-slate-300 mt-2">
-                        Onlara riyazi ehtimalı ən yüksək olan (məsələn, 3-də 1 şansla <strong>Uğurlu 7</strong>) biletləri təklif edin. Bilet paketlərini onların gözü önündə açmaq daxili inamı maksimuma qaldırır.
+                        Onlara riyazi ehtimalı ən yüksək olan (məsələn, 3-də 1 şansla <strong>Uğurlu 7</strong>) biletləri təklif edin. Bilet bilet paketlərini onların gözü önündə açmaq daxili inamı maksimuma qaldırır.
                     </p>
                 </div>
             </div>
@@ -952,6 +1489,31 @@
             }
         }
 
+        // Poz-Qazan Sürətli Vitrin Süzgəci (Filtrasiya Logikası)
+        function filterPozQazan(price) {
+            const cards = document.querySelectorAll('.pq-card');
+            const buttons = ['all', '1', '2', '3', '5', '10'];
+            
+            buttons.forEach(btn => {
+                const el = document.getElementById(`btn-pq-${btn}`);
+                if (el) {
+                    if (btn === price) {
+                        el.className = "px-3 py-1.5 rounded-lg text-[11px] font-black bg-red-600 text-white transition whitespace-nowrap";
+                    } else {
+                        el.className = "px-3 py-1.5 rounded-lg text-[11px] font-black bg-[#131c32] text-slate-300 border border-slate-800 transition whitespace-nowrap";
+                    }
+                }
+            });
+
+            cards.forEach(card => {
+                if (price === 'all' || card.getAttribute('data-price') === price) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
         // Accordion Açıb-Bağlanma Logikası
         function toggleAccordion(id) {
             const content = document.getElementById(id);
@@ -998,7 +1560,7 @@
                     "Gəlin ağılla və məntiqlə düşünək, hamı udsaydı şirkət batardı."
                 ],
                 correct: 1,
-                exp: "Müştəri ilə mübahisə etmədən və ya etirazdan yayınmadan qanuni uduş faizi standartını dürüst formada izah etmək lazımdır."
+                exp: "Müştəri ile mübahisə etmədən və ya etirazdan yayınmadan qanuni uduş faizi standartını dürüst formada izah etmək lazımdır."
             },
             {
                 q: "Məntəqə bağlanarkən mobil terminallar və printerlərin qorunması üçün hansı rəsmi qayda mütləqdir?",
