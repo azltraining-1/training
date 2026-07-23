@@ -107,6 +107,15 @@
         details > summary::-webkit-details-marker {
             display: none;
         }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); text-shadow: 0 0 0 rgba(16, 185, 129, 0); }
+            50% { transform: scale(1.04); text-shadow: 0 0 15px rgba(16, 185, 129, 0.8); }
+        }
+        .animate-heartbeat {
+            animation: heartbeat 2s ease-in-out infinite;
+            display: inline-block;
+        }
     </style>
 </head>
 <body class="bg-slate-50 dark:bg-[#010940] text-slate-900 dark:text-white pb-24 transition-colors duration-300">
@@ -132,9 +141,9 @@
         <!-- TAB 1: ANA SƏHİFƏ -->
         <section id="home" class="tab-content active space-y-6">
 
-            <!-- BÖYÜK VƏ STATİK ŞÜAR BAŞLIĞI -->
-            <div class="text-center mt-2 mb-1">
-                <h1 class="text-2xl sm:text-3xl font-black uppercase tracking-widest text-emerald-600 dark:text-emerald-400 drop-shadow-sm">
+            <!-- BÖYÜK VƏ ANİMASİYALI ŞÜAR BAŞLIĞI -->
+            <div class="text-center mt-2 mb-3 overflow-visible">
+                <h1 class="text-1xl sm:text-3xl font-black uppercase tracking-widest text-emerald-600 dark:text-emerald-400 animate-heartbeat">
                     ÖYRƏN > TƏTBİQ ET > SAT
                 </h1>
             </div>
@@ -254,66 +263,72 @@
             </div>
 
             <!-- MƏSULİYYƏTLƏ OYNA BÖLMƏSİ -->
-            <div>
-                <h3 class="flex items-center justify-center text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">
-    <span class="relative flex items-center justify-center w-5 h-5 mr-2 shrink-0">
-        <!-- Nidanın içini tünd sarı edən hissə -->
-        <span class="absolute inset-0 m-auto w-[3px] h-[8px] bg-[#FBB117] top-[5px] rounded-sm z-0"></span>
-        <!-- Qırmızı üçbucaq -->
-        <i class="fa-solid fa-triangle-exclamation text-red-600 dark:text-red-500 text-[18px] relative z-10"></i>
-    </span>
-    MƏSULİYYƏTLƏ OYNA!
-</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div class="bg-white dark:bg-[#02117B] p-4 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition shadow-sm dark:shadow-none">
-                        <div class="flex items-center space-x-2.5 mb-2">
-                            <div class="w-8 h-8 rounded-lg bg-rose-100 dark:bg-rose-500/10 flex items-center justify-center text-rose-600 dark:text-rose-500 shrink-0 shadow-inner">
-                                <i class="fa-solid fa-face-smile-wink text-[15px]"></i>
-                            </div>
-                            <h4 class="font-bold text-[13px] text-slate-800 dark:text-white">Ürəyincə əylən</h4>
-                        </div>
-                        <p class="text-[12px] text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Bu bir şans və əyləncə oyunudur. Qazanc və gəlir yeri kimi baxmadan oynasan, həyəcan və əyləncədən hər zaman həzz alarsan.
-                        </p>
+            <details class="group bg-white dark:bg-[#02117B] rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm dark:shadow-none transition-colors duration-300 overflow-hidden">
+                <summary class="flex justify-between items-center cursor-pointer outline-none list-none select-none p-4 bg-slate-50 dark:bg-slate-800/40">
+                    <div class="flex items-center">
+                        <span class="relative flex items-center justify-center w-5 h-5 mr-3 shrink-0">
+                            <!-- Nidanın içini tünd sarı edən hissə -->
+                            <span class="absolute inset-0 m-auto w-[3px] h-[8px] bg-[#FBB117] top-[5px] rounded-sm z-0"></span>
+                            <!-- Qırmızı üçbucaq -->
+                            <i class="fa-solid fa-triangle-exclamation text-red-600 dark:text-red-500 text-[18px] relative z-10"></i>
+                        </span>
+                        <h3 class="font-bold text-[13px] text-slate-800 dark:text-white uppercase tracking-wider mt-0.5">MƏSULİYYƏTLƏ OYNA!</h3>
                     </div>
-                    
-                    <div class="bg-white dark:bg-[#02117B] p-4 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition shadow-sm dark:shadow-none">
-                        <div class="flex items-center space-x-2.5 mb-2">
-                            <div class="w-8 h-8 rounded-lg bg-cyan-100 dark:bg-cyan-500/10 flex items-center justify-center text-cyan-600 dark:text-cyan-500 shrink-0 shadow-inner">
-                                <i class="fa-solid fa-book-open-reader text-[15px]"></i>
+                    <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 group-open:rotate-180 ml-2"></i>
+                </summary>
+                
+                <div class="p-4 border-t border-slate-100 dark:border-slate-800/80 animate-[fadeIn_0.3s_ease-in-out]">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 transition">
+                            <div class="flex items-center space-x-2.5 mb-2">
+                                <div class="w-8 h-8 rounded-lg bg-rose-100 dark:bg-rose-500/10 flex items-center justify-center text-rose-600 dark:text-rose-500 shrink-0 shadow-inner">
+                                    <i class="fa-solid fa-face-smile-wink text-[15px]"></i>
+                                </div>
+                                <h4 class="font-bold text-[13px] text-slate-800 dark:text-white">Ürəyincə əylən</h4>
                             </div>
-                            <h4 class="font-bold text-[13px] text-slate-800 dark:text-white">Xəbərin olsun</h4>
+                            <p class="text-[12px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Bu bir şans və əyləncə oyunudur. Qazanc və gəlir yeri kimi baxmadan oynasan, həyəcan və əyləncədən hər zaman həzz alarsan.
+                            </p>
                         </div>
-                        <p class="text-[12px] text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Şans oyunlarımızda bəxtini sınamazdan əvvəl şərt, qayda və əmsallar haqqında məlumat topla. Faydalı məlumatlarla daha intizamlı və məsuliyyətli oynaya bilərsən.
-                        </p>
-                    </div>
+                        
+                        <div class="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 transition">
+                            <div class="flex items-center space-x-2.5 mb-2">
+                                <div class="w-8 h-8 rounded-lg bg-cyan-100 dark:bg-cyan-500/10 flex items-center justify-center text-cyan-600 dark:text-cyan-500 shrink-0 shadow-inner">
+                                    <i class="fa-solid fa-book-open-reader text-[15px]"></i>
+                                </div>
+                                <h4 class="font-bold text-[13px] text-slate-800 dark:text-white">Xəbərin olsun</h4>
+                            </div>
+                            <p class="text-[12px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Şans oyunlarımızda bəxtini sınamazdan əvvəl şərt, qayda və əmsallar haqqında məlumat topla. Faydalı məlumatlarla daha intizamlı və məsuliyyətli oynaya bilərsən.
+                            </p>
+                        </div>
 
-                    <div class="bg-white dark:bg-[#02117B] p-4 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition shadow-sm dark:shadow-none">
-                        <div class="flex items-center space-x-2.5 mb-2">
-                            <div class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-amber-500/10 flex items-center justify-center text-amber-600 dark:text-amber-500 shrink-0 shadow-inner">
-                                <i class="fa-solid fa-hourglass-half text-[15px]"></i>
+                        <div class="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 transition">
+                            <div class="flex items-center space-x-2.5 mb-2">
+                                <div class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-amber-500/10 flex items-center justify-center text-amber-600 dark:text-amber-500 shrink-0 shadow-inner">
+                                    <i class="fa-solid fa-hourglass-half text-[15px]"></i>
+                                </div>
+                                <h4 class="font-bold text-[13px] text-slate-800 dark:text-white">Təmkinli ol, qalib ol</h4>
                             </div>
-                            <h4 class="font-bold text-[13px] text-slate-800 dark:text-white">Təmkinli ol, qalib ol</h4>
+                            <p class="text-[12px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Özün üçün oyun və zaman limiti təyin et və ona sadiq qalmağa çalış. Daha çox oyun daha çox qazanma şansı deyil. Fasilə verməkdə fayda var.
+                            </p>
                         </div>
-                        <p class="text-[12px] text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Özün üçün oyun və zaman limiti təyin et və ona sadiq qalmağa çalış. Daha çox oyun daha çox qazanma şansı deyil. Fasilə verməkdə fayda var.
-                        </p>
-                    </div>
 
-                    <div class="bg-white dark:bg-[#02117B] p-4 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition shadow-sm dark:shadow-none">
-                        <div class="flex items-center space-x-2.5 mb-2">
-                            <div class="w-8 h-8 rounded-lg bg-red-100 dark:bg-red-500/10 flex items-center justify-center text-red-600 dark:text-red-500 shrink-0 shadow-inner">
-                                <span class="font-black text-[14px] tracking-tighter">18+</span>
+                        <div class="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 transition">
+                            <div class="flex items-center space-x-2.5 mb-2">
+                                <div class="w-8 h-8 rounded-lg bg-red-100 dark:bg-red-500/10 flex items-center justify-center text-red-600 dark:text-red-500 shrink-0 shadow-inner">
+                                    <span class="font-black text-[14px] tracking-tighter">18+</span>
+                                </div>
+                                <h4 class="font-bold text-[13px] text-slate-800 dark:text-white">18+ yaş məhdudiyyəti</h4>
                             </div>
-                            <h4 class="font-bold text-[13px] text-slate-800 dark:text-white">18+ yaş məhdudiyyəti</h4>
+                            <p class="text-[12px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Yalnız 18 yaşı tamam olmuş şəxslər idman mərc və lotereya oyunlarımızda iştirak edə bilər.
+                            </p>
                         </div>
-                        <p class="text-[12px] text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Yalnız 18 yaşı tamam olmuş şəxslər idman mərc və lotereya oyunlarımızda iştirak edə bilər.
-                        </p>
                     </div>
                 </div>
-            </div>
+            </details>
 
             <div id="home-videos-anchor" class="bg-white dark:bg-[#02117B] rounded-xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm dark:shadow-none transition-colors duration-300">
                 <div class="flex items-center justify-between mb-3">
@@ -1272,6 +1287,90 @@ Daha çox sayda oyun mövcud olmayanda, 2 və ya 5 AZN oyunlar tək sətrdən ç
                                 <img src="beşdəbeş-logo.png" alt="Prestij" class="h-10 w-auto object-contain drop-shadow-sm">
                             </div>
                             <span class="text-[20px] font-black text-emerald-600 dark:text-emerald-400">50.500₼</span>
+                        </div>
+                    </div>
+                </div>
+              <!-- Qalib 7 -->
+                <div class="bg-white dark:bg-[#02117B] rounded-xl border border-slate-200 dark:border-slate-800 p-4 flex items-center space-x-4 shadow-sm dark:shadow-none transition-colors duration-300">
+                    <img src="ilyas-image.png" alt="İlyas Əliyev" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover shrink-0 border-2 border-emerald-500 p-0.5 shadow-sm">
+                    <div class="flex-1">
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">İlyas Əliyev</h4>
+                        <p class="text-[12px] text-slate-500 dark:text-slate-400 italic my-1">"1 bilet aldı, 10 000 manat qazandı."</p>
+                        <div class="flex items-center justify-between mt-2 border-t border-slate-100 dark:border-slate-800/80 pt-2">
+                            <div class="flex items-center space-x-1.5">
+                                <img src="uğurluyeddi-logo.png" alt="Uğurlu 7" class="h-10 w-auto object-contain drop-shadow-sm">
+                            </div>
+                            <span class="text-[20px] font-black text-emerald-600 dark:text-emerald-400">10.000₼</span>
+                        </div>
+                    </div>
+                </div>
+               <!-- Qalib 8 -->
+                <div class="bg-white dark:bg-[#02117B] rounded-xl border border-slate-200 dark:border-slate-800 p-4 flex items-center space-x-4 shadow-sm dark:shadow-none transition-colors duration-300">
+                    <img src="loğman-image.png" alt="Loğman Mustafayev" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover shrink-0 border-2 border-emerald-500 p-0.5 shadow-sm">
+                    <div class="flex-1">
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Loğman Mustafayev</h4>
+                        <p class="text-[12px] text-slate-500 dark:text-slate-400 italic my-1">"Ekspres Keno Şəki sakinini sevindirdi!"</p>
+                        <div class="flex items-center justify-between mt-2 border-t border-slate-100 dark:border-slate-800/80 pt-2">
+                            <div class="flex items-center space-x-1.5">
+                                <img src="ekspreskeno-logo.png" alt="Ekspres Keno" class="h-10 w-auto object-contain drop-shadow-sm">
+                            </div>
+                            <span class="text-[20px] font-black text-emerald-600 dark:text-emerald-400">10.000₼</span>
+                        </div>
+                    </div>
+                </div>
+               <!-- Qalib 9 -->
+                <div class="bg-white dark:bg-[#02117B] rounded-xl border border-slate-200 dark:border-slate-800 p-4 flex items-center space-x-4 shadow-sm dark:shadow-none transition-colors duration-300">
+                    <img src="mirzağa-image.png" alt="Mirzağa Zeynalov" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover shrink-0 border-2 border-emerald-500 p-0.5 shadow-sm">
+                    <div class="flex-1">
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Mirzağa Zeynalov</h4>
+                        <p class="text-[12px] text-slate-500 dark:text-slate-400 italic my-1">"100.000 manat uddu! Şansına göz dəyməsin!"</p>
+                        <div class="flex items-center justify-between mt-2 border-t border-slate-100 dark:border-slate-800/80 pt-2">
+                            <div class="flex items-center space-x-1.5">
+                                <img src="gözmuncuğu-logo.png" alt="Göz Muncuğu" class="h-10 w-auto object-contain drop-shadow-sm">
+                            </div>
+                            <span class="text-[20px] font-black text-emerald-600 dark:text-emerald-400">100.000₼</span>
+                        </div>
+                    </div>
+                </div>
+               <!-- Qalib 10 -->
+                <div class="bg-white dark:bg-[#02117B] rounded-xl border border-slate-200 dark:border-slate-800 p-4 flex items-center space-x-4 shadow-sm dark:shadow-none transition-colors duration-300">
+                    <img src="xalidə-image.png" alt="Xalidə Həsənova" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover shrink-0 border-2 border-emerald-500 p-0.5 shadow-sm">
+                    <div class="flex-1">
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Xalidə Həsənova</h4>
+                        <p class="text-[12px] text-slate-500 dark:text-slate-400 italic my-1">"Bəxtinə güvəndi, 10.000 manat qazandı"</p>
+                        <div class="flex items-center justify-between mt-2 border-t border-slate-100 dark:border-slate-800/80 pt-2">
+                            <div class="flex items-center space-x-1.5">
+                                <img src="sürqazan-logo.png" alt="Sür Qazan" class="h-10 w-auto object-contain drop-shadow-sm">
+                            </div>
+                            <span class="text-[20px] font-black text-emerald-600 dark:text-emerald-400">10.000₼</span>
+                        </div>
+                    </div>
+                </div>
+               <!-- Qalib 11 -->
+                <div class="bg-white dark:bg-[#02117B] rounded-xl border border-slate-200 dark:border-slate-800 p-4 flex items-center space-x-4 shadow-sm dark:shadow-none transition-colors duration-300">
+                    <img src="lalə-image.png" alt="Lalə Əsgərova" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover shrink-0 border-2 border-emerald-500 p-0.5 shadow-sm">
+                    <div class="flex-1">
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Lalə Əsgərova</h4>
+                        <p class="text-[12px] text-slate-500 dark:text-slate-400 italic my-1">"Bakı sakini "Yığ, Apar"da qazandı!"</p>
+                        <div class="flex items-center justify-between mt-2 border-t border-slate-100 dark:border-slate-800/80 pt-2">
+                            <div class="flex items-center space-x-1.5">
+                                <img src="yığapar-logo.png" alt="Yığ, Apar" class="h-12 w-auto object-contain drop-shadow-sm">
+                            </div>
+                            <span class="text-[20px] font-black text-emerald-600 dark:text-emerald-400">5.000₼</span>
+                        </div>
+                    </div>
+                </div>
+               <!-- Qalib 12 -->
+                <div class="bg-white dark:bg-[#02117B] rounded-xl border border-slate-200 dark:border-slate-800 p-4 flex items-center space-x-4 shadow-sm dark:shadow-none transition-colors duration-300">
+                    <img src="samir-image.png" alt="Samir Haqverdiyev" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover shrink-0 border-2 border-emerald-500 p-0.5 shadow-sm">
+                    <div class="flex-1">
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Samir haqverdiyev</h4>
+                        <p class="text-[12px] text-slate-500 dark:text-slate-400 italic my-1">"Bakı sakini "Qızıl" ani lotereyasında 25.000 manat qazandı!"</p>
+                        <div class="flex items-center justify-between mt-2 border-t border-slate-100 dark:border-slate-800/80 pt-2">
+                            <div class="flex items-center space-x-1.5">
+                                <img src="qızıl_logo.png" alt="Qızıl" class="h-10 w-auto object-contain drop-shadow-sm">
+                            </div>
+                            <span class="text-[20px] font-black text-emerald-600 dark:text-emerald-400">25.000₼</span>
                         </div>
                     </div>
                 </div>
