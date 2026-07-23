@@ -121,7 +121,7 @@
         
         <!-- Sağ: Yazı + Tema Düyməsi -->
         <div class="flex items-center z-10 space-x-3 mr-3">
-            <h1 class="text-[13px] sm:text-[14px] text-slate-800 dark:text-slate-300 uppercase tracking-widest font-bold whitespace-nowrap text-right mt-0.5">Partnyor Portalı</h1>
+            <h1 class="text-[10px] sm:text-[20px] text-slate-800 dark:text-slate-300 uppercase tracking-widest font-bold whitespace-nowrap text-right mt-0.5">Partnyor Portalı</h1>
             <button onclick="toggleTheme()" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition outline-none shadow-inner active:scale-95 border border-slate-200 dark:border-slate-700">
                 <i id="themeToggleIcon" class="fa-solid fa-moon"></i>
             </button>
@@ -131,6 +131,13 @@
     <main class="max-w-5xl mx-auto px-4 pt-6">
         <!-- TAB 1: ANA SƏHİFƏ -->
         <section id="home" class="tab-content active space-y-6">
+
+            <!-- BÖYÜK VƏ STATİK ŞÜAR BAŞLIĞI -->
+            <div class="text-center mt-2 mb-1">
+                <h1 class="text-2xl sm:text-3xl font-black uppercase tracking-widest text-emerald-600 dark:text-emerald-400 drop-shadow-sm">
+                    ÖYRƏN > TƏTBİQ ET > SAT
+                </h1>
+            </div>
         
             <div class="bg-gradient-to-br from-red-50 via-white to-slate-50 dark:from-red-950/40 dark:via-slate-900 dark:to-slate-950 rounded-2xl p-6 border border-red-200 dark:border-red-500/20 relative overflow-hidden shadow-lg dark:shadow-2xl transition-colors duration-300">
                 <div class="absolute -right-10 -bottom-10 w-44 h-44 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -314,7 +321,7 @@
                         <i class="fa-brands fa-youtube text-red-600 dark:text-red-500 text-xl"></i>
                         <h3 class="font-bold text-sm text-slate-800 dark:text-white">Rəsmi Video Təlim Pleylisti</h3>
                     </div>
-                    <span class="text-[13px] px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-600 dark:text-slate-400 font-semibold border border-slate-200 dark:border-slate-700">Yeni Partnyor Üçün</span>
+                    <span class="text-[13px] px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-600 dark:text-slate-400 font-semibold border border-slate-200 dark:border-slate-700">Yeni Partnyor</span>
                 </div>
                 <p class="text-xs text-slate-600 dark:text-slate-300 mb-4 leading-relaxed">
                     Satış nöqtəsində fəaliyyətə başlamazdan əvvəl rəsmi terminal istifadəsi və ümumi qaydaları özündə cəmləşdirən rəsmi pleylisti izləmək mütləqdir.
@@ -465,27 +472,28 @@
                         <!-- PLN 1 -->
                         <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800/80">
                             <img src="PLN-001.jpeg" alt="Planoqram 1" onclick="openImageModal(this.src)" class="w-full sm:w-32 h-auto object-cover rounded shadow-sm cursor-zoom-in hover:opacity-80 transition border border-slate-200 dark:border-slate-700">
-                            <p class="text-[13px] text-slate-700 dark:text-slate-300 leading-relaxed flex-1 mt-2 sm:mt-0"><strong class="text-blue-600 dark:text-blue-400">1:</strong> Burada mətn olacaq.</p>
+                            <p class="text-[13px] text-slate-700 dark:text-slate-300 leading-relaxed flex-1 mt-2 sm:mt-0"><strong class="text-blue-600 dark:text-blue-400">1:</strong> Bu lotereyalar olmadığı zaman 4 Fəsil əlavə edilsin. 
+Daha çox sayda oyun mövcud olmayanda, 2 və ya 5 AZN oyunlar tək sətrdən çox olaraq yerləşdirilsin. Prioritet: Uğurlu 7 və 5 X-dir. </p>
                         </div>
                         <!-- PLN 2 -->
                         <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800/80">
                             <img src="PLN-002.jpeg" alt="Planoqram 2" onclick="openImageModal(this.src)" class="w-full sm:w-32 h-auto object-cover rounded shadow-sm cursor-zoom-in hover:opacity-80 transition border border-slate-200 dark:border-slate-700">
-                            <p class="text-[13px] text-slate-700 dark:text-slate-300 leading-relaxed flex-1 mt-2 sm:mt-0"><strong class="text-blue-600 dark:text-blue-400">2:</strong> Burada mətn olacaq.</p>
+                            <p class="text-[13px] text-slate-700 dark:text-slate-300 leading-relaxed flex-1 mt-2 sm:mt-0"><strong class="text-blue-600 dark:text-blue-400">2:</strong> Nöqtədə siyahıda olan oyunlar olmayanda, 2 və ya 5 AZN oyunlar daha özəl ağırlıqla yerləşdirilsin. Prioritet: Uğurlu 7 və 5 X-dir. </p>
                         </div>
                         <!-- PLN 3 -->
                         <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800/80">
                             <img src="PLN-003.jpeg" alt="Planoqram 3" onclick="openImageModal(this.src)" class="w-full sm:w-32 h-auto object-cover rounded shadow-sm cursor-zoom-in hover:opacity-80 transition border border-slate-200 dark:border-slate-700">
-                            <p class="text-[13px] text-slate-700 dark:text-slate-300 leading-relaxed flex-1 mt-2 sm:mt-0"><strong class="text-blue-600 dark:text-blue-400">3:</strong> Burada mətn olacaq.</p>
+                            <p class="text-[13px] text-slate-700 dark:text-slate-300 leading-relaxed flex-1 mt-2 sm:mt-0"><strong class="text-blue-600 dark:text-blue-400">3:</strong> Poz-qazanların sıralaması şəkildə göstərildiyi kimi olmalıdır.</p>
                         </div>
                         <!-- PLN 4 -->
                         <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800/80">
                             <img src="PLN-004.jpeg" alt="Planoqram 4" onclick="openImageModal(this.src)" class="w-full sm:w-32 h-auto object-cover rounded shadow-sm cursor-zoom-in hover:opacity-80 transition border border-slate-200 dark:border-slate-700">
-                            <p class="text-[13px] text-slate-700 dark:text-slate-300 leading-relaxed flex-1 mt-2 sm:mt-0"><strong class="text-blue-600 dark:text-blue-400">4:</strong> Burada mətn olacaq.</p>
+                            <p class="text-[13px] text-slate-700 dark:text-slate-300 leading-relaxed flex-1 mt-2 sm:mt-0"><strong class="text-blue-600 dark:text-blue-400">4:</strong> Nöqtədə siyahıda olan oyunlar olmayanda, "Yığ, Apar!" da əlavə edilsin. Daha çox sayda oyun mövcud olmayanda, 2 və ya 5 AZN oyunlar tək sətrdən çox olaraq yerləşdirilsin. Prioritet Uğurlu 7 və 5X-dir. Daha bahalı oyunlar yuxarıda olmalıdır.</p>
                         </div>
                         <!-- PLN 5 -->
                         <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800/80">
                             <img src="PLN-005.jpeg" alt="Planoqram 5" onclick="openImageModal(this.src)" class="w-full sm:w-32 h-auto object-cover rounded shadow-sm cursor-zoom-in hover:opacity-80 transition border border-slate-200 dark:border-slate-700">
-                            <p class="text-[13px] text-slate-700 dark:text-slate-300 leading-relaxed flex-1 mt-2 sm:mt-0"><strong class="text-blue-600 dark:text-blue-400">5:</strong> Burada mətn olacaq.</p>
+                            <p class="text-[13px] text-slate-700 dark:text-slate-300 leading-relaxed flex-1 mt-2 sm:mt-0"><strong class="text-blue-600 dark:text-blue-400">5:</strong> Nöqtədəd siyahıda olan oyunlar olmayanda, "Qoşa" da əlavə edilsin. Daha çox sayda oyun mövcud olmayanda, 2 və ya 5 AZN oyunlar tək sətrdən çox olaraq yerləşdirilsin. Prioritet Uğurlu 7 və 5X-dir. Daha bahalı oyunlar yuxarıda olmalıdır.</p>
                         </div>
                     </div>
                 </details>
@@ -1371,7 +1379,7 @@
                     <div class="p-5 space-y-5 flex-1 flex flex-col">
                         <div class="bg-slate-50 dark:bg-slate-900/50 rounded-lg p-4 border border-slate-200 dark:border-slate-800/80 space-y-2.5 transition-colors duration-300">
                             <h4 class="text-[12px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-2"><i class="fa-solid fa-circle-info mr-1"></i> Özəlliklər və Təyinatı</h4>
-                            <p class="text-[13px] text-slate-600 dark:text-slate-300 leading-relaxed"><strong class="text-slate-800 dark:text-slate-400"> Tirajlı lotereya satışı və poz-qazan validasiyası üçün nəzərdə tutulub. Market və masalarda daha çox istifadə edilir. Terminalın ən böyük üstünlüyü iki ekranının olmasıdır.
+                            <p class="text-[13px] text-slate-600 dark:text-slate-300 leading-relaxed"><strong class="text-slate-800 dark:text-slate-400"> Tirajlı lotereya satışı və poz-qazan validasiyası üçün nəzərdə tutulub. Terminalın ən böyük üstünlüyü iki ekranının olmasıdır.
 </strong> </p>
                         </div>
 
@@ -1431,7 +1439,7 @@
                     <div class="p-5 space-y-5 flex-1 flex flex-col">
                         <div class="bg-slate-50 dark:bg-slate-900/50 rounded-lg p-4 border border-slate-200 dark:border-slate-800/80 space-y-2.5 transition-colors duration-300">
                             <h4 class="text-[12px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-2"><i class="fa-solid fa-circle-info mr-1"></i> Özəlliklər və Təyinatı</h4>
-                            <p class="text-[13px] text-slate-600 dark:text-slate-300 leading-relaxed"><strong class="text-slate-800 dark:text-slate-400"> Tirajlı lotereya satışı və poz-qazan validasiyası üçün nəzərdə tutulub. Market və masalarda daha çox istifadə edilir. Terminalın üstünlüyü planşet kimi əldə istifadə edilə bilməsidir. </strong> </p>
+                            <p class="text-[13px] text-slate-600 dark:text-slate-300 leading-relaxed"><strong class="text-slate-800 dark:text-slate-400"> Tirajlı lotereya satışı və poz-qazan validasiyası üçün nəzərdə tutulub. Terminalın üstünlüyü planşet kimi əldə istifadə edilə bilməsidir. </strong> </p>
                         </div>
 
                         <div class="border-t border-slate-200 dark:border-slate-800 pt-4 mt-auto">
@@ -1555,7 +1563,7 @@
         <section id="partner-standards" class="tab-content space-y-6">
             <div class="border-b border-slate-200 dark:border-slate-800 pb-2 transition-colors duration-300">
                 <h2 class="text-lg font-bold text-slate-900 dark:text-white">Rəsmi Partnyor Standartları</h2>
-                <p class="text-xs text-slate-500 dark:text-slate-400">Satış nöqtəsi geyim, nizam-intizam və audit yoxlaması meyarları</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Satış nöqtəsinin geyim, nizam-intizamı</p>
             </div>
             
             <div class="bg-gradient-to-r from-amber-50 to-red-50 dark:from-amber-600/20 dark:to-red-600/20 p-4 rounded-xl border border-amber-200 dark:border-amber-500/20 flex flex-col sm:flex-row items-center justify-between gap-4 transition-colors duration-300">
@@ -1740,7 +1748,7 @@
                             <i class="fa-solid fa-chevron-down text-[12px] text-slate-400 transition-transform duration-300"></i>
                         </button>
                         <div id="cus-type-1" class="accordion-content bg-slate-50/50 dark:bg-slate-900/30 rounded-b-lg text-[13px] text-slate-600 dark:text-slate-300 px-3">
-                            <p class="py-3 leading-relaxed border-l-2 border-blue-400 dark:border-blue-500/50 pl-3 ml-1.5 my-1"><strong class="text-blue-600 dark:text-blue-400">Yanaşma:</strong> Çox danışma, sürətli xidmət göstər, vaxt almayan Ekspres Keno təklif et.</p>
+                            <p class="py-3 leading-relaxed border-l-2 border-blue-400 dark:border-blue-500/50 pl-3 ml-1.5 my-1"><strong class="text-blue-600 dark:text-blue-400">Yanaşma:</strong> Çox danışma, sürətli xidmət göstər, vaxt almayan tirajlı lotereya təklif et.</p>
                         </div>
                     </div>
 
@@ -2612,7 +2620,7 @@ gözləmək istəmirlər!
             { keywords: ["t2s təyinatı", "t2s nədir", "t2s üstünlüyü", "t2s özəlliyi", "t2s haqqında", "t2s", "sunmi"], answer: "<strong>SUNMI T2s Özəlliyi və Təyinatı:</strong><br>Tirajlı lotereya və poz-qazan validasiyası üçün masaüstü terminaldır. Əsas üstünlüyü <strong>iki ekranlı</strong> olmasıdır – arxa ekran müştərilərə uduşları nümayiş etdirir." },
             { keywords: ["v3 mix təyinatı", "v3 mix nədir", "v3 mix üstünlüyü", "v3 mix özəlliyi", "v3 mix haqqında", "v3 üstünlüyü"], answer: "<strong>SUNMI V3 MIX Özəlliyi və Təyinatı:</strong><br>Sürətli satış və validasiya üçün hibrid mobil terminaldır. Əsas üstünlüyü <strong>planşet hissəsinin altlıqdan (cradle) ayrılaraq mobil şəkildə istifadə edilə bilməsidir</strong>. Növbəni azaltmaq üçün idealdır." },
             { keywords: ["wave təyinatı", "wave nədir", "wave üstünlüyü", "wave özəlliyi", "wave haqqında"], answer: "<strong>WAVE Özəlliyi və Təyinatı:</strong><br>İdman mərcləri (Misli) və virtual idman üçün xüsusi dizayn edilmiş böyük ekranlı terminaldır. Həmçinin lotereya biletlərini də sistemdən keçirə bilir." },
-            { keywords: ["zebra təyinatı", "zebra nədir", "zebra üstünlüyü", "zebra özəlliyi", "zebra haqqında"], answer: "<strong>ZEBRA Özəlliyi və Təyinatı:</strong><br>Bluetooth vasitəsilə mobil planşetlərə qoşulan simsiz, portativ çap və validasiya cihazıdır. Əsasən kiçik nöqtələrdə poz-qazan yoxlanılması üçün istifadə edilir." },
+            { keywords: ["zebra təyinatı", "zebra nədir", "zebra üstünlüyü", "zebra özəlliyi", "zebra haqqında", "zebra"], answer: "<strong>ZEBRA Özəlliyi və Təyinatı:</strong><br>Bluetooth vasitəsilə mobil planşetlərə qoşulan simsiz, portativ çap və validasiya cihazıdır. Əsasən kiçik nöqtələrdə poz-qazan yoxlanılması üçün istifadə edilir." },
 
             // 5. TERMİNALLAR (TEXNİKİ PROBLEMLƏR)
             { keywords: ["daxili sim kart", "sim kart", "mobil internet", "sim karta keçid"], answer: "<strong>Daxili SİM Karta Keçid:</strong><br>WAVE terminalında daxili SIM karta keçmək üçün WAN portundakı internet kabelini çıxarın və cihazı restart edin. V3 MIX terminalında isə sadəcə planşetin yuxarı menyusundan daxili 4G mobil şəbəkəsini aktivləşdirin." },
@@ -2635,6 +2643,9 @@ gözləmək istəmirlər!
             { keywords: ["prestij", "prestije"], answer: "<strong>Prestij (10 AZN):</strong><br>Ən yüksək VIP biletdir. OYUN 1,2,3-də iki eyni simvol tap. 'PUL' simvolu tapıb qazan. 'BRİLYANT' uduşu 2 qat artırır. Max uduş: 500 000 AZN." },
             { keywords: ["uduş xonçası", "udus xoncasi", "xonca"], answer: "<strong>Uduş Xonçası (3 AZN):</strong><br>Əsas oyunda simvollar uyğun gəlsin. BONUS oyunda 'Səməni' simvolunu tap və qazan. Max: 25 000 AZN." },
             { keywords: ["sür qazan", "sur qazan", "sür qazan oyunu"], answer: "<strong>Sür Qazan (10 AZN):</strong><br>Rəqəmlər uyğun gəlsin; 'Sənin sürətin' çox olsun; 'AÇAR' tap; BONUS oyunu tap. Max uduş: 10 000 AZN." },
+
+            // 7. PLANOQRAM VƏ VİTRİN DÜZÜLÜŞÜ
+            { keywords: ["planoqram", "vitrin", "vitrinə", "düzülüş", "biletlərin düzülüşü", "necə dizmək", "necə dizilməlidir", "ardıcıllıq"], answer: "<strong>Rəsmi Vitrin Planoqramı:</strong><br>Poz-Qazan biletləri vitrində qiymət kateqoriyasına uyğun olaraq ucuzdan bahaya (1 AZN-dən 10 AZN-ə) doğru artan ardıcıllıqla təqdim edilməlidir. Vitrin düzülüşünün vizual sxemini (şəkillərini) görmək üçün <strong>'Məhsullar'</strong> bölməsinə keçib <strong>'Rəsmi Vitrin Planoqramı'</strong> qutusunu aça bilərsiniz." },
 
             // DEFAULT SALAMLAŞMA VƏ DİGƏRLƏRİ
             { keywords: ["salam", "hi", "səhər", "axşam", "necəsən", "necesen"], answer: "Salam. Sizə necə kömək edə bilərəm?" }
